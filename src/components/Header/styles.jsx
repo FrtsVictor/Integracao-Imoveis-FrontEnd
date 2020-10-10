@@ -10,13 +10,24 @@ justify-content:flex-start;
 export const Container = styled.div`
 display: flex;
 justify-content: space-between;
-align-items: baseline;
+background-color: gray;
+
 margin-bottom: 30px;
+img{
+        position:flex;
+        justify-content:flex-start;
+        width: 250px;
+        margin-bottom:-4px;
+
+}
 
 ul {
     list-style: none;
     display:flex;
+    margin-top: 40px;
+
 }
+
 
 li{
     font-size: 17px;
@@ -38,6 +49,12 @@ span{
     &:hover{
         color:#93c6f9;
     }
+}
+input {
+    display: flex;
+    width: 550px;
+    height: 30px;
+    margin-top: 38px;
 }
 
 `;

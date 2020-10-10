@@ -1,39 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Title, Container } from './styles';
-import { FiSearch, FiUser } from 'react-icons/fi';
+import { FiUser } from 'react-icons/fi';
+import { Container } from './styles';
+import logoImg from '../../assets/logo_1.png';
 
-const Header = ({ title }) => (
-  <>
-    <Title>{title}</Title>
-    <Container>
+const Header = () => (
+  <Container>
+    <Link to="/Home"><img src={logoImg} alt="" /></Link>
+    <form>
+      <input type="text" placeholder="Pesquise seu imovel aqui" />
+    </form>
 
-      <ul>
-        <li>
-          <Link to="/Home">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/Cadastro">
-            Cadastro
-          </Link>
-        </li>
-        <li>
-          <Link to="/Favoritos">
-            Favoritos
-          </Link>
-        </li>
-        <li>
-          <Link >
-                 <Link to='/Login'>Login  <FiUser /></Link>
-          </Link>
-        </li>
-      </ul>
+    <ul>
 
-    </Container>
+      <li>
+        <Link to="/Favoritos">Favoritos</Link>
+      </li>
+      <li>
+        <Link to="/Login">
+          Entrar
+          <FiUser />
+        </Link>
 
-  </>
+      </li>
+    </ul>
+
+  </Container>
+
 );
 
 export default Header;
