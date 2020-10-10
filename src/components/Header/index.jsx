@@ -8,7 +8,7 @@ const Header = () => (
   <Container>
     <Link to="/Home"><img src={logoImg} alt="" /></Link>
     <form>
-      <input type="text" placeholder="Pesquise seu imovel aqui" />
+      <input type="text" placeholder="Pesquise seu imóvel aqui" />
     </form>
 
     <ul>

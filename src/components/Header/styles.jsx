@@ -10,7 +10,8 @@ justify-content:flex-start;
 export const Container = styled.div`
 display: flex;
 justify-content: space-between;
-background-color: gray;
+
+
 
 margin-bottom: 30px;
 img{
@@ -25,13 +26,15 @@ ul {
     list-style: none;
     display:flex;
     margin-top: 40px;
+    justify-content: space-between;
 
 }
 
 
 li{
     font-size: 17px;
-    margin-left: 15px;
+    margin: 20px;
+
 }
 
 a{
@@ -51,10 +54,18 @@ span{
     }
 }
 input {
-    display: flex;
-    width: 550px;
+    border-radius:4px;
+    box-shadow: 1px 1px 2px #adadad;
+    background: #cccccc;
+    border:1px solid #000000;
+    width:500px;
     height: 30px;
     margin-top: 38px;
+    transition: 0.3s;
+}
+input[type=text]:hover{
+    background: #e1e1e8;
+    border:1px solid #006699;
 }
 
 `;
