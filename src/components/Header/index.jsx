@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Title, Container } from './styles';
+import { FiSearch, FiUser } from 'react-icons/fi';
 
 const Header = ({ title }) => (
   <>
@@ -24,8 +25,8 @@ const Header = ({ title }) => (
           </Link>
         </li>
         <li>
-          <Link to="/Login">
-            Login
+          <Link >
+                 <Link to='/Login'>Login  <FiUser /></Link>
           </Link>
         </li>
       </ul>
