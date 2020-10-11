@@ -1,32 +1,61 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FiUser } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { FiUser, FiSearch } from 'react-icons/fi';
 import { Container } from './styles';
 import logoImg from '../../assets/logo_1.png';
 
-const Header = () => (
-  <Container>
-    <Link to="/Home"><img src={logoImg} alt="" /></Link>
-    <form>
-      <input type="text" placeholder="Pesquise seu imóvel aqui" />
-    </form>
+const Header = () => {
+  const history = useHistory();
+  const [query, setQuery] = useState('');
 
-    <ul>
+  // const getUser = () => { // pra mostrar o usuário logado, aguardando api com as rotas
+  //   let user = JSON.parse(localStorage.getItem('Rota:user'))
+  //   return user
+  // }
 
-      <li>
-        <Link to="/Favoritos">Favoritos</Link>
-      </li>
-      <li>
-        <Link to="/Login">
-          Entrar
-          <FiUser />
-        </Link>
+  return (
+    <>
+      <Container>
+        <Link to="/Home"><img src={logoImg} alt="" /></Link>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          history.push({
+            pathname: '/search',
+            search: query.split(' ').join('&'),
+          });
+          setQuery('');
+        }}
+        >
 
-      </li>
-    </ul>
+          <input
+            type="text"
+            placeholder="Pesquise seu imóvel aqui"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
 
-  </Container>
+          />
 
-);
+          <button><FiSearch/></button>
+
+        </form>
+
+        <ul>
+
+          <li>
+            <Link to="/Favoritos">Favoritos</Link>
+          </li>
+          <li>
+            <Link to="/Login">
+              Entrar
+              <FiUser />
+            </Link>
+
+          </li>
+        </ul>
+
+      </Container>
+    </>
+  );
+};
 
 export default Header;
