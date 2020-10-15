@@ -1,0 +1,13 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "userName":"daniboy",
+        "firstName":"Daniel",
+        "lastName": "Araújo",
+        "email":"daniel@daniel.com",
+        "rules":["admin"]
+      }
+      ]
+
+  }
