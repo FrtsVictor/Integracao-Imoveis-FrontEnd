@@ -8,6 +8,7 @@ import BathtubIcon from '@material-ui/icons/Bathtub';
 import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
+import HomeIcon from '@material-ui/icons/Home';
 
 // _______________Styles
 import {
@@ -15,18 +16,19 @@ import {
 } from './styles';
 
 const Card = ({
-  cidade, valor, bairro, tipo, banheiros, dormitorios, transacao,
+  cidade, valor, bairro, tipo, banheiros, dormitorios, transacao, urlImagem,
 }) => (
 
   <CardContainer>
-    <HouseImg />
+    <HouseImg urlImagem={urlImagem} />
     <Info>
       <FavIcon>
         <FavoriteBorderSharpIcon />
       </FavIcon>
 
       <CardP>
-        <ApartmentIcon />
+
+        {tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
         {tipo}
       </CardP>
 
@@ -40,6 +42,7 @@ const Card = ({
       <CardP>
         <AttachMoneyIcon />
         {valor}
+        .000.00
       </CardP>
 
       <LineDiv>
