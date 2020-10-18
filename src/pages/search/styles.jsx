@@ -49,7 +49,7 @@ export const PriceActive = styled.div`
 
 `;
 
-export const ProductSection = styled.div`
+export const CardSection = styled.div`
     display:flex;
     flex-direction: column;
     width: 70%;
