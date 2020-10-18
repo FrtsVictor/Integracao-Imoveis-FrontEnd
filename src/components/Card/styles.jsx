@@ -15,7 +15,7 @@ export const CardContainer = styled.div`
 `;
 
 export const HouseImg = styled.img.attrs((props) => ({
-  src: props.Img || Myimg,
+  src: props.urlImagem || Myimg,
 }))`
     width: 50%;
     height: 100%;
