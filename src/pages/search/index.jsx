@@ -151,7 +151,7 @@ const Search = () => {
 
         <CardSection>
           <p><strong>Resultado da pesquisa: </strong>{searchQuery.join(' ')}</p>
-          {!filteredproperty.length ? <span>Nenhum produto encontrado :( </span> :
+          {!filteredproperty.length ? <span>Nenhum imóvel encontrado :( </span> :
             filteredproperty.map(card => (
               <Blur >
                 {/* <Card key={card.id} card={card} /> */}
