@@ -155,7 +155,7 @@ const Search = () => {
             filteredproperty.map(card => (
               <Blur >
                 {/* <Card key={card.id} card={card} /> */}
-                {card.qtdEstoque < 1 && <p id="unavailable">Produto indisponivel</p>}
+                {card.qtdEstoque < 1 && <p id="unavailable">Imóvel indisponível</p>}
                 <hr style={{ color: '#eee' }} />
               </Blur>
             ))}
