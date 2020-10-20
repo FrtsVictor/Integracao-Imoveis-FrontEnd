@@ -1,19 +1,11 @@
 import styled from 'styled-components';
 
-export const Title = styled.div`
-    font-size: 30px;
-    display: flex;
-    margin-left: 50px;
-    justify-content:flex-start;
-`;
-
 export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
     border-bottom: 1px solid #ccc;
-
-
+  
 img{
     position:flex;
     justify-content:flex-start;
@@ -53,35 +45,32 @@ form{
 }
 
 input {
-    border-radius:4px;
-    box-shadow: 1px 1px 2px #adadad;
-    background: #cccccc;
-    border:1px solid #000000;
-    width:500px;
+    padding: 10px;
+    margin-left: 200px;
+    width: 500px;
     height: 40px;
-    margin-top: 45px;
-    transition: 0.3s;
-    font-style:italic;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid #ced3d4;
+    color: #333;
+    margin-top:50px;
+    margin-left:50px;
 }
 
-input[type=text]:hover{
-    background: #e1e1e8;
-    border:1px solid #006699;
-
-}
 button{
-    border-radius:4px;
-    box-shadow: 1px 1px 2px #adadad;
-    background: #cccccc;
-    border:1px solid #000000;
-    width:45px;
-    height: 44px;
-    margin-top: 45px;
-    transition: 0.3s;
-        :hover{
-        background: #e1e1e8;
-        border:1px solid #006699;
+    width: 50px;
+    height: 40px;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ced3d4;
+    border-left: none;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #ced3d4;
+    transition:0.3s;
+    margin-top:50px;
+    margin-right:50px;
 
+        &:hover {
+            opacity: .75;
 
 
 }
