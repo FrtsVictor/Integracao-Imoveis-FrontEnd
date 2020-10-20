@@ -4,6 +4,9 @@ import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Carousel from '../../components/Carousel';
 
+// import ButtonPOST from '../../components/BtnTestesApi/BtnPOST';
+// import ButtonGET from '../../components/BtnTestesApi/BtnGetAll';
+
 import { Container, CardDiv } from './styles';
 
 import api from '../../services/api';
@@ -31,10 +34,6 @@ const Home = () => {
       }
     }, [],
   );
-
-  const likeButton = () => {
-  };
-
   // _____________________________________________________________
 
   useEffect(() => {
@@ -43,6 +42,8 @@ const Home = () => {
 
   return (
     <>
+      {/* <ButtonPOST />
+      <ButtonGET /> */}
       <Header title="Home" />
       <Container>
         <Carousel />
@@ -50,6 +51,7 @@ const Home = () => {
           { apiList.map((imovel) => (
             <div>
               <Card
+                imovel={{ ...imovel }}
                 titulo={imovel.titulo}
                 valor={imovel.valor}
                 bairro={imovel.bairro}
