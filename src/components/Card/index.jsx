@@ -9,6 +9,7 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 import HomeIcon from '@material-ui/icons/Home';
+import IconButton from '@material-ui/core/IconButton';
 
 // _______________Styles
 import {
@@ -23,11 +24,12 @@ const Card = ({
     <HouseImg urlImagem={urlImagem} />
     <Info>
       <FavIcon>
-        <FavoriteBorderSharpIcon />
+        <IconButton color="default" aria-label="add an alarm">
+          <FavoriteBorderSharpIcon />
+        </IconButton>
       </FavIcon>
 
       <CardP>
-
         {tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
         {tipo}
       </CardP>
@@ -41,8 +43,7 @@ const Card = ({
 
       <CardP>
         <AttachMoneyIcon />
-        {valor}
-        .000.00
+        { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}
       </CardP>
 
       <LineDiv>
@@ -63,7 +64,7 @@ const Card = ({
         <CardP>
           <IconDiv>
             <ShuffleSharpIcon />
-            {transacao}
+            {(transacao === 'V' ? 'Venda' : 'Locação')}
           </IconDiv>
         </CardP>
 
