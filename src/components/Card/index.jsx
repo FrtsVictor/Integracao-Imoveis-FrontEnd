@@ -11,66 +11,80 @@ import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 import HomeIcon from '@material-ui/icons/Home';
 import IconButton from '@material-ui/core/IconButton';
 
+// ApiConnection
+import apiIntegracaoImoveis from '../../services/apiIntegracaoImoveis';
+
 // _______________Styles
 import {
   CardContainer, HouseImg, CardP, Info, LineDiv, IconDiv, FavIcon,
 } from './styles';
 
 const Card = ({
-  cidade, valor, bairro, tipo, banheiros, dormitorios, transacao, urlImagem,
-}) => (
+  cidade, valor, bairro, tipo, banheiros, dormitorios, transacao, urlImagem, imovel,
 
-  <CardContainer>
-    <HouseImg urlImagem={urlImagem} />
-    <Info>
-      <FavIcon>
-        <IconButton color="default" aria-label="add an alarm">
-          <FavoriteBorderSharpIcon />
-        </IconButton>
-      </FavIcon>
+}) => {
+  const likeButton = (imovelObj) => {
+    apiIntegracaoImoveis.post(imovelObj)
+      .then((resp) => resp);
+  };
 
-      <CardP>
-        {tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
-        {tipo}
-      </CardP>
+  return (
+    <CardContainer>
+      <HouseImg urlImagem={urlImagem} />
+      <Info>
+        <FavIcon>
+          <IconButton
+            color="default"
+            aria-label="add an alarm"
+            onClick={() => likeButton(imovel)}
+          >
+            <FavoriteBorderSharpIcon />
+          </IconButton>
+        </FavIcon>
 
-      <CardP>
-        <RoomIcon />
-        {cidade}
-        {' / '}
-        {bairro}
-      </CardP>
-
-      <CardP>
-        <AttachMoneyIcon />
-        { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}
-      </CardP>
-
-      <LineDiv>
         <CardP>
-          <IconDiv>
-            <BathtubIcon />
-            {banheiros}
-          </IconDiv>
+          {tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
+          {tipo}
         </CardP>
 
         <CardP>
-          <IconDiv>
-            <HotelIcon />
-            {dormitorios}
-          </IconDiv>
+          <RoomIcon />
+          {cidade}
+          {' / '}
+          {bairro}
         </CardP>
 
         <CardP>
-          <IconDiv>
-            <ShuffleSharpIcon />
-            {(transacao === 'V' ? 'Venda' : 'Locação')}
-          </IconDiv>
+          <AttachMoneyIcon />
+          { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}
         </CardP>
 
-      </LineDiv>
-    </Info>
-  </CardContainer>
-);
+        <LineDiv>
+          <CardP>
+            <IconDiv>
+              <BathtubIcon />
+              {banheiros}
+            </IconDiv>
+          </CardP>
+
+          <CardP>
+            <IconDiv>
+              <HotelIcon />
+              {dormitorios}
+            </IconDiv>
+          </CardP>
+
+          <CardP>
+            <IconDiv>
+              <ShuffleSharpIcon />
+              {(transacao === 'V' ? 'Venda' : 'Locação')}
+            </IconDiv>
+          </CardP>
+
+        </LineDiv>
+      </Info>
+    </CardContainer>
+  );
+};
 
 export default Card;
