@@ -17,6 +17,20 @@
     "react-scripts": "3.4.3",
     "styled-components": "^5.2.0"
   },
+
+  "configurations": [
+    {
+      "name": "Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "//localhost:3000",
+      "webRoot": "${workspaceRoot}/src",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    }
+  ]
+,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

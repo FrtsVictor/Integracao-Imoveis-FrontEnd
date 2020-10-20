@@ -9,6 +9,10 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 import HomeIcon from '@material-ui/icons/Home';
+import IconButton from '@material-ui/core/IconButton';
+
+// ApiConnection
+import apiIntegracaoImoveis from '../../services/apiIntegracaoImoveis';
 
 // _______________Styles
 import {
@@ -16,60 +20,71 @@ import {
 } from './styles';
 
 const Card = ({
-  cidade, valor, bairro, tipo, banheiros, dormitorios, transacao, urlImagem,
-}) => (
+  cidade, valor, bairro, tipo, banheiros, dormitorios, transacao, urlImagem, imovel,
 
-  <CardContainer>
-    <HouseImg urlImagem={urlImagem} />
-    <Info>
-      <FavIcon>
-        <FavoriteBorderSharpIcon />
-      </FavIcon>
+}) => {
+  const likeButton = (imovelObj) => {
+    apiIntegracaoImoveis.post(imovelObj)
+      .then((resp) => resp);
+  };
 
-      <CardP>
+  return (
+    <CardContainer>
+      <HouseImg urlImagem={urlImagem} />
+      <Info>
+        <FavIcon>
+          <IconButton
+            color="default"
+            aria-label="add an alarm"
+            onClick={() => likeButton(imovel)}
+          >
+            <FavoriteBorderSharpIcon />
+          </IconButton>
+        </FavIcon>
 
-        {tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
-        {tipo}
-      </CardP>
-
-      <CardP>
-        <RoomIcon />
-        {cidade}
-        {' / '}
-        {bairro}
-      </CardP>
-
-      <CardP>
-        <AttachMoneyIcon />
-        {valor}
-        .000.00
-      </CardP>
-
-      <LineDiv>
         <CardP>
-          <IconDiv>
-            <BathtubIcon />
-            {banheiros}
-          </IconDiv>
+          {tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
+          {tipo}
         </CardP>
 
         <CardP>
-          <IconDiv>
-            <HotelIcon />
-            {dormitorios}
-          </IconDiv>
+          <RoomIcon />
+          {cidade}
+          {' / '}
+          {bairro}
         </CardP>
 
         <CardP>
-          <IconDiv>
-            <ShuffleSharpIcon />
-            {transacao}
-          </IconDiv>
+          <AttachMoneyIcon />
+          { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}
         </CardP>
 
-      </LineDiv>
-    </Info>
-  </CardContainer>
-);
+        <LineDiv>
+          <CardP>
+            <IconDiv>
+              <BathtubIcon />
+              {banheiros}
+            </IconDiv>
+          </CardP>
+
+          <CardP>
+            <IconDiv>
+              <HotelIcon />
+              {dormitorios}
+            </IconDiv>
+          </CardP>
+
+          <CardP>
+            <IconDiv>
+              <ShuffleSharpIcon />
+              {(transacao === 'V' ? 'Venda' : 'Locação')}
+            </IconDiv>
+          </CardP>
+
+        </LineDiv>
+      </Info>
+    </CardContainer>
+  );
+};
 
 export default Card;

@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Carousel from '../../components/Carousel';
 
-import { Container } from './styles';
+// import ButtonPOST from '../../components/BtnTestesApi/BtnPOST';
+// import ButtonGET from '../../components/BtnTestesApi/BtnGetAll';
+
+import { Container, CardDiv } from './styles';
 
 import api from '../../services/api';
 
@@ -18,18 +21,19 @@ const Home = () => {
     headers: { Authorization: `bearer ${acessToken}` },
   };
 
-  const loadList = async () => {
-    try {
-      const resp = await api.post('Imovel/obter-lista', {}, config);
-      const test = resp.data.content.listaPaginada;
-      setApiList(test);
-      console.log(test);
-      console.log('esse', apiList);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  const loadList = useCallback(
+    async () => {
+      try {
+        const resp = await api.post('Imovel/obter-lista', {}, config);
+        const test = resp.data.content.listaPaginada;
+        setApiList(test);
+        console.log(test);
+        console.log('LoadList', apiList);
+      } catch (error) {
+        console.log(error);
+      }
+    }, [],
+  );
   // _____________________________________________________________
 
   useEffect(() => {
@@ -38,27 +42,30 @@ const Home = () => {
 
   return (
     <>
+      {/* <ButtonPOST />
+      <ButtonGET /> */}
       <Header title="Home" />
-      <Carousel />
       <Container>
-
-        {
-        apiList.map((imovel) => (
-          <Card
-            titulo={imovel.titulo}
-            valor={imovel.valor}
-            bairro={imovel.bairro}
-            tipo={imovel.tipo}
-            cidade={imovel.cidade}
-            dormitorios={imovel.dormitorios}
-            banheiros={imovel.banheiros}
-            transacao={imovel.transacao}
-            destaque={imovel.destaque}
-            urlImagem={imovel.urlImagem}
-          />
-        ))
-        }
-
+        <Carousel />
+        <CardDiv>
+          { apiList.map((imovel) => (
+            <div>
+              <Card
+                imovel={{ ...imovel }}
+                titulo={imovel.titulo}
+                valor={imovel.valor}
+                bairro={imovel.bairro}
+                tipo={imovel.tipo}
+                cidade={imovel.cidade}
+                dormitorios={imovel.dormitorios}
+                banheiros={imovel.banheiros}
+                transacao={imovel.transacao}
+                destaque={imovel.destaque}
+                urlImagem={imovel.urlImagem}
+              />
+            </div>
+          ))}
+        </CardDiv>
       </Container>
     </>
   );
