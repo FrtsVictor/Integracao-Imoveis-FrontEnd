@@ -34,6 +34,7 @@ const Home = () => {
       }
     }, [],
   );
+
   // _____________________________________________________________
 
   useEffect(() => {
@@ -42,6 +43,7 @@ const Home = () => {
 
   return (
     <>
+      {/* <ButtonGET /> */}
       {/* <ButtonPOST />
       <ButtonGET /> */}
       <Header title="Home" />
@@ -52,16 +54,16 @@ const Home = () => {
             <div>
               <Card
                 imovel={{ ...imovel }}
-                titulo={imovel.titulo}
-                valor={imovel.valor}
-                bairro={imovel.bairro}
-                tipo={imovel.tipo}
-                cidade={imovel.cidade}
-                dormitorios={imovel.dormitorios}
-                banheiros={imovel.banheiros}
-                transacao={imovel.transacao}
-                destaque={imovel.destaque}
                 urlImagem={imovel.urlImagem}
+                // titulo={imovel.titulo}
+                // valor={imovel.valor}
+                // bairro={imovel.bairro}
+                // tipo={imovel.tipo}
+                // cidade={imovel.cidade}
+                // dormitorios={imovel.dormitorios}
+                // banheiros={imovel.banheiros}
+                // transacao={imovel.transacao}
+                // destaque={imovel.destaque}
               />
             </div>
           ))}
