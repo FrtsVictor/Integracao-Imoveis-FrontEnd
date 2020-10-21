@@ -16,10 +16,11 @@ import HomeIcon from '@material-ui/icons/Home';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 
 import {
   HouseIcons, CarouselContainer, HouseImg, PapperContainer, Container, InfoP,
-  HouseDetails, RightMenuContainer, ContainerUp, ContainerDown, MenuText,
+  HouseDetails, RightMenuContainer, ContainerUp, ContainerDown, MenuText, FavIcon,
 } from './styles';
 
 export default function TransitionsModal({ handleClose, open, imovel }) {
@@ -58,6 +59,15 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
               </CarouselContainer>
 
               <RightMenuContainer>
+                <FavIcon>
+                  <IconButton
+                    color="default"
+                    aria-label="add an alarm"
+                    onClick={() => console.log('err')}
+                  >
+                    <FavoriteBorderSharpIcon />
+                  </IconButton>
+                </FavIcon>
                 <MenuText>
                   {imovel.tipo}
                 </MenuText>
