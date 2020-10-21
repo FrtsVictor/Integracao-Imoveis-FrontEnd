@@ -11,16 +11,19 @@ import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 import HomeIcon from '@material-ui/icons/Home';
 import IconButton from '@material-ui/core/IconButton';
 
+// Moral
+import ModalImovel from '../ModalImovel';
+
 // ApiConnection
 import apiIntegracaoImoveis from '../../services/apiIntegracaoImoveis';
 
 // _______________Styles
 import {
-  CardContainer, HouseImg, CardP, Info, LineDiv, IconDiv, FavIcon,
+  CardContainer, HouseImg, CardP, Info, LineDiv, IconDiv, FavIcon, DivImg,
 } from './styles';
 
 const Card = ({
-  cidade, valor, bairro, tipo, banheiros, dormitorios, transacao, urlImagem, imovel,
+  urlImagem, imovel,
 
 }) => {
   const likeButton = (imovelObj) => {
@@ -28,9 +31,27 @@ const Card = ({
       .then((resp) => resp);
   };
 
+  //   _________ModalOpen
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <CardContainer>
-      <HouseImg urlImagem={urlImagem} />
+      <DivImg onClick={handleOpen}>
+        <HouseImg
+          urlImagem={urlImagem}
+        />
+      </DivImg>
+      <ModalImovel open={open} handleClose={handleClose} imovel={imovel} />
+
       <Info>
         <FavIcon>
           <IconButton
@@ -43,41 +64,41 @@ const Card = ({
         </FavIcon>
 
         <CardP>
-          {tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
-          {tipo}
+          {imovel.tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
+          {imovel.tipo}
         </CardP>
 
         <CardP>
           <RoomIcon />
-          {cidade}
+          {imovel.cidade}
           {' / '}
-          {bairro}
+          {imovel.bairro}
         </CardP>
 
         <CardP>
           <AttachMoneyIcon />
-          { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)}
+          { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
         </CardP>
 
         <LineDiv>
           <CardP>
             <IconDiv>
               <BathtubIcon />
-              {banheiros}
+              {imovel.banheiros}
             </IconDiv>
           </CardP>
 
           <CardP>
             <IconDiv>
               <HotelIcon />
-              {dormitorios}
+              {imovel.dormitorios}
             </IconDiv>
           </CardP>
 
           <CardP>
             <IconDiv>
               <ShuffleSharpIcon />
-              {(transacao === 'V' ? 'Venda' : 'Locação')}
+              {(imovel.transacao === 'V' ? 'Venda' : 'Locação')}
             </IconDiv>
           </CardP>
 

@@ -13,10 +13,15 @@ export const CardContainer = styled.div`
     max-height: 200px;
 `;
 
+export const DivImg = styled.div`
+    display: flex;
+    flex:1;
+    `;
+
 export const HouseImg = styled.img.attrs((props) => ({
   src: props.urlImagem || DefaultImg,
 }))`
-    width: 50%;
+    width: 100%;
     height: 100%;
     transition: 0.3s;
     opacity: 1;
@@ -27,20 +32,6 @@ export const HouseImg = styled.img.attrs((props) => ({
     }
   `;
 
-export const DivImg = styled.div`
-display: flex;
-flex:1;
-`;
-
-export const CardP = styled.p`
-font-size: 0.8rem;
-margin-left: 15px;
-align-items: center;
-display:flex;
-flex: 1;
-
-`;
-
 export const Info = styled.div`
 display:flex;
 flex-direction: column;
@@ -50,6 +41,15 @@ flex:1;
 export const LineDiv = styled.div`
 display: flex;
 justify-content:space-between;
+`;
+
+export const CardP = styled.p`
+font-size: 0.8rem;
+margin-left: 15px;
+align-items: center;
+display:flex;
+flex: 1;
+
 `;
 
 export const IconDiv = styled.div`
