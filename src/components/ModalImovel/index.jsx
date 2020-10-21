@@ -14,6 +14,8 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import HomeIcon from '@material-ui/icons/Home';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 import {
   HouseIcons, CarouselContainer, HouseImg, PapperContainer, Container, InfoP,
@@ -37,6 +39,15 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
         <Fade in={open}>
           <PapperContainer>
 
+            <IconButton
+              style={{
+                display: 'flex', justifyContent: 'flex-end', color: 'red', alignItems: 'flex-end', flexDirection: 'flex-end',
+              }}
+              type="button"
+              onClick={() => handleClose()}
+            >
+              <CloseIcon />
+            </IconButton>
             <ContainerUp>
               <CarouselContainer>
                 <AwesomeSlider>
@@ -94,6 +105,11 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
               </HouseDetails>
 
               <HouseIcons>
+
+                <InfoP>
+                  {imovel.destaque === true ? <StarBorderIcon style={{ fontSize: 50 }} /> : ''}
+                </InfoP>
+
                 <InfoP>
                   {imovel.tipo === 'Casa' ? <HomeIcon style={{ fontSize: 50 }} /> : <ApartmentIcon style={{ fontSize: 50 }} />}
                 </InfoP>
@@ -112,12 +128,6 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
                   <ShuffleSharpIcon style={{ fontSize: 50 }} />
                   {(imovel.transacao === 'V' ? 'Venda' : 'Locação')}
                 </InfoP>
-
-                {
-            imovel.destaque === true ? <StarBorderIcon style={{ fontSize: 50 }} /> : 'normal'
-
-            }
-
               </HouseIcons>
             </ContainerDown>
 
