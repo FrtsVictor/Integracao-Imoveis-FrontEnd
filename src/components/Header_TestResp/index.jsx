@@ -43,7 +43,7 @@ const Header = () => {
         <LinksContainer>
           <ul>
             <li>
-              <Link to="/Favoritos">Favoritoss</Link>
+              <Link to="/Favoritos">Favoritos</Link>
             </li>
             <li>
               <Link to="/Login">

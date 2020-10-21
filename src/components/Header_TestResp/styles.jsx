@@ -19,7 +19,6 @@ export const Container = styled.div`
 
 export const LinksContainer = styled.div`
 display:flex;
-background-color: red;
 justify-content:center;
 align-items:center;
 flex:1;
@@ -63,23 +62,25 @@ export const LogoContainer = styled.div`
 align-content:center;
 display:flex;
 flex:1;
-background-color: #a64541;
+margin-left:50px;
+
+
 
 img{
         /* position:flex; */
         justify-content:flex-start;
         min-width: 250px;
         width: 10vw;
-        /* margin-bottom:-4px; */
+        margin-bottom:-20px;
+
     }
 `;
 
 export const SearchContainer = styled.div`
-display:inline-flex;
+display:flex;
 justify-content:center;
 align-items:center;
 flex: 2;
-background-color: #ff1fff;
 
 input {
     border-radius:4px;
@@ -87,18 +88,19 @@ input {
     background: #efefef;
     border:1px solid #000000;
     height: 40px;
-    width:70%;
+    width: 300px;
     transition: 0.3s;
     font-style:italic;
 
 }
 
-input[type=text]:hover{
-    width:80%;
+/* input[type=text]:hover{
+
+    width:100%;
     background: #e1e1e8;
     border:1px solid #006699;
 
-}
+} */
 
 button{
     background-color:orange;

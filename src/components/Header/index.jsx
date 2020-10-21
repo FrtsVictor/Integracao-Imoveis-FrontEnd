@@ -31,7 +31,7 @@ const Header = () => {
             type="text"
             placeholder="Pesquise seu imóvel aqui"
             value={query}
-            onChange={e => setQuery(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
 
           />
 

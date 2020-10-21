@@ -1,11 +1,21 @@
 import styled from 'styled-components';
 
+export const Title = styled.div`
+    font-size: 30px;
+    display: flex;
+    align-items:center;
+    /* margin-left: 50px;
+    justify-content:flex-start; */
+`;
+
 export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
     border-bottom: 1px solid #ccc;
-  
+    min-width:200px;
+    width:100%;
+
 img{
     position:flex;
     justify-content:flex-start;
