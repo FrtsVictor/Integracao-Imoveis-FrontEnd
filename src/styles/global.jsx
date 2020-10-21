@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+
+
 *{
     margin: 0;
     padding: 0;
@@ -8,11 +10,8 @@ export default createGlobalStyle`
     box-sizing: border-box
 }
 
-body {
-
-}
-
 html, body, #root {
+    font-family: 'Roboto', sans-serif;
     height: 100%;
     margin: 0 auto;
 }

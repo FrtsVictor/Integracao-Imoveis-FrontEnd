@@ -6,6 +6,7 @@ flex:1;
 max-width: 90vw;
 max-height: 60vh;
 margin: 0 auto;
+background-color: white;
 `;
 
 export const HouseImg = styled.img.attrs((props) => ({
