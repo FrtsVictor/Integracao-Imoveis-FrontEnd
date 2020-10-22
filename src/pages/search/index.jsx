@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import Card from '../../components/Card';
-import { FiX } from 'react-icons/fi';
+// import { FiX } from 'react-icons/fi';
 import api from '../../services/api';
 
 import { Container, Filter, Blur, Price, PriceActive, CardSection } from './styles';
@@ -36,20 +36,20 @@ const Search = () => {
 
       try {
         if (query.length > 0) {
-          filtered = filtered.filter(card => (
-            query.some(q => card.nome.toLowerCase().includes(q)
+          filtered = filtered.filter((card) => (
+            query.some((q) => card.nome.toLowerCase().includes(q)
               || card.nomeTipo.toLowerCase().includes(q)
               || card.tipo.toLowerCase().includes(q))
           ));
         }
 
         if (filters.length > 0) {
-          filtered = filtered.filter(card => (
+          filtered = filtered.filter((card) => (
             filters.includes(card.nomeTipo)
           ));
         }
         if (activePriceFilter) {
-          filtered = filtered.filter(card => (
+          filtered = filtered.filter((card) => (
             card.valor <= maxValue && card.valor >= minValue
           ));
         }
@@ -58,8 +58,7 @@ const Search = () => {
       }
 
       setFilteredProperty(filtered);
-
-    },[property, filters, maxValue, minValue, activePriceFilter, history.location.search]
+    }, [property, filters, maxValue, minValue, activePriceFilter, history.location.search],
   );
 
   const loadType = async () => {
@@ -80,9 +79,9 @@ const Search = () => {
     if (e.checked) {
       setFilters(filters.concat(e.value))
     } else {
-      setFilters(filters.filter(f => f !== e.value))
+      setFilters(filters.filter((f) => f !== e.value));
     }
-  }
+  };
 
   function convertPrice(value) {
     return Number(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
