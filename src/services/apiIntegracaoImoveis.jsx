@@ -6,9 +6,9 @@ const api = axios.create({
 
 const ApiImoveis = {
 
-  get: async () => {
+  get: async (page = 0) => {
     try {
-      const response = await api.get('api/imoveis?sort=cidade,asc');
+      const response = await api.get(`api/imoveis?page=${page}`);
       return response.data;
     } catch (error) {
       return console.log(error);
