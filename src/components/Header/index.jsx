@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiUser, FiSearch } from 'react-icons/fi';
-import { Container } from './styles';
+import { FiSearch } from 'react-icons/fi';
+import PersonIcon from '@material-ui/icons/Person';
+import {
+  Container, LinksContainer, LogoContainer, SearchContainer,
+} from './styles';
 import logoImg from '../../assets/logo_1.png';
 
 const Header = () => {
@@ -16,42 +19,48 @@ const Header = () => {
   return (
     <>
       <Container>
-        <Link to="/Home"><img src={logoImg} alt="" /></Link>
-        <form onSubmit={(e) => {
-          e.preventDefault();
-          history.push({
-            pathname: '/search',
-            search: query.split(' ').join('&'),
-          });
-          setQuery('');
-        }}
-        >
+        <LogoContainer>
+          <Link to="/Home"><img src={logoImg} alt="" /></Link>
+        </LogoContainer>
 
-          <input
-            type="text"
-            placeholder="Pesquise seu imóvel aqui"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+        <SearchContainer>
 
-          />
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            history.push({
+              pathname: '/search',
+              search: query.split(' ').join('&'),
+            });
+            setQuery('');
+          }}
+          >
+            <input
+              type="text"
+              placeholder="Pesquise seu imóvel aqui"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
 
-          <button><FiSearch/></button>
+            <button><FiSearch /></button>
+          </form>
 
-        </form>
+        </SearchContainer>
 
-        <ul>
+        <LinksContainer>
+          <ul>
+            <li>
+              <Link to="/Favoritos">Favoritos</Link>
+            </li>
+            <li>
+              <Link to="/Login">
+                Entrar
+                <PersonIcon />
+              </Link>
 
-          <li>
-            <Link to="/Favoritos">Favoritos</Link>
-          </li>
-          <li>
-            <Link to="/Login">
-              Entrar
-              <FiUser />
-            </Link>
+            </li>
 
-          </li>
-        </ul>
+          </ul>
+        </LinksContainer>
 
       </Container>
     </>
