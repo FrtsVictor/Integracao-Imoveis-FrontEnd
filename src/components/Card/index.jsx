@@ -60,11 +60,12 @@ const Card = ({
             {imovel.tipo === 'Casa' ? 'Casa' : 'APT'}
           </IconLeft>
 
-          {/* onClick={() => likeButton(imovel)} */}
-
           <IconRight>
 
-            <button>
+            <button
+              type="button"
+              onClick={() => likeButton(imovel)}
+            >
               <FavoriteBorderIcon />
             </button>
           </IconRight>
