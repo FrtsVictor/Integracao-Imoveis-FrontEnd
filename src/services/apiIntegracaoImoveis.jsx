@@ -6,18 +6,26 @@ const api = axios.create({
 
 const ApiImoveis = {
 
-  get: async () => (
-    api.get('api/imoveis')
-      .then((resp) => resp.data).catch((err) => console.log(err))
-  ),
+  get: async () => {
+    try {
+      const response = await api.get('api/imoveis?sort=cidade,asc');
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
 
-  post: async (imovel) => (
-    api.post('api/imoveis', {
-      ...imovel,
-    })
-      .then((resp) => resp.data)
-      .catch((error) => console.log(error.response.data))
-  ),
+  post: async (imovel) => {
+    try {
+      const response = await api.post('api/imoveis', {
+        ...imovel,
+      });
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
+
 };
 
 export default ApiImoveis;
