@@ -6,14 +6,12 @@ margin-bottom: 50px;
 `;
 
 export const CardDiv = styled.div`
-margin-top:3%;
-display: flex;
-flex-wrap: wrap;
-flex-direction: row;
+margin-top:5%;
+display: grid;
+/* flex-wrap: wrap; */
+/* flex-direction: row; */
 justify-content: space-between;
-
-& div{
-    margin-top:1%;
-}
+grid-template-columns: 1fr 1fr;
+grid-gap: 2%;
 
 `;

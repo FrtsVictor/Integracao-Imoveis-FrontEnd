@@ -55,15 +55,6 @@ const Home = () => {
               <Card
                 imovel={{ ...imovel }}
                 urlImagem={imovel.urlImagem}
-                // titulo={imovel.titulo}
-                // valor={imovel.valor}
-                // bairro={imovel.bairro}
-                // tipo={imovel.tipo}
-                // cidade={imovel.cidade}
-                // dormitorios={imovel.dormitorios}
-                // banheiros={imovel.banheiros}
-                // transacao={imovel.transacao}
-                // destaque={imovel.destaque}
               />
             </div>
           ))}
