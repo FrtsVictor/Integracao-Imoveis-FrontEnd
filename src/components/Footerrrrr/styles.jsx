@@ -6,15 +6,7 @@ export const Container = styled.div`
     justify-content: space-between;
     background-color: #cdcdcd;
     align-items: center;
-    height:5%;
-
-    && div {
-    background-color: #cdcdcd;
-    width: 100px;
-    text-align: center;
-    line-height: 75px;
-    font-size: 30px;
-  }
+    height:8%;
 `;
 
 export const LogoContainer = styled.div`
@@ -33,7 +25,6 @@ height: 100%;
 export const TextContainer = styled.div`
 display:flex;
 flex:2;
-height:100%;
 align-items:center;
 justify-content:center;
 
@@ -42,7 +33,7 @@ justify-content:center;
 }
 `;
 
-export const Icones = styled.div`
+export const IconsContainer = styled.div`
 display: flex;
 flex:1;
 justify-content:flex-end;
