@@ -13,5 +13,4 @@ display: grid;
 justify-content: space-between;
 grid-template-columns: 1fr 1fr;
 grid-gap: 2%;
-
 `;

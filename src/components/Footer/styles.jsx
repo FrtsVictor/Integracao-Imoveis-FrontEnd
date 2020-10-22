@@ -8,7 +8,6 @@ export const Container = styled.div`
      color: black;
      font-size:14px;
      text-align: center;
-     position:fixed;
      bottom:0;
      width:100%;
      margin-left:-8px;
