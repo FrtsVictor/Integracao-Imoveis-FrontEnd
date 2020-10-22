@@ -21,6 +21,7 @@ import { CardInfoIcons } from './styles';
 const useStyles = makeStyles(() => ({
   root: {
     width: 345,
+    backgroundColor: '#ece9e9',
   },
   media: {
     height: '40%',
