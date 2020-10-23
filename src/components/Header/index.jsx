@@ -47,6 +47,7 @@ const Header = () => {
         </SearchContainer>
 
         <LinksContainer>
+
           <ul>
             <li>
               <Link to="/Favoritos">Favoritos</Link>

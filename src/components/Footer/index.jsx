@@ -1,28 +1,45 @@
 import React from 'react';
-import {
-  Container, Icones, LogoImg, LogoContainer, TextContainer,
-} from './styles';
 
-const Footer = () => (
+import PinterestIcon from '@material-ui/icons/Pinterest';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
-  <Container>
-    <LogoContainer>
-      <LogoImg />
-    </LogoContainer>
+import { Container, Wrapper, Link, ColumnIcon,TeamDiv} from './styles';
 
-    <TextContainer>
-      <p>
-        <b><em>Produzido por Residentes Serratec 2020 \o/</em></b>
-      </p>
-    </TextContainer>
+const Footer = () => {
+  return (
+        <Container >
 
-    <Icones>
-      <a href="https://instagram.com" className="fa fa-instagram" target="_blank" />
-      <a href="https//facebook.com" className="fa fa-facebook" target="_blank" />
-      <a href="https://twitter.com" className="fa fa-twitter" target="_blank" />
-    </Icones>
-  </Container>
+            <Wrapper>
 
-);
+
+
+                <h5>Siga a gente</h5>
+                <ColumnIcon>
+                  <li className="list-unstyled">
+                    <Link href="https://www.instagram.com/?hl=pt-br"><InstagramIcon /></Link>
+                  </li>
+                  <li className="list-unstyled">
+
+                    <Link href="https://www.facebook.com/"><FacebookIcon /></Link>
+                  </li>
+                  <li className="list-unstyled">
+                    <Link href="https://br.pinterest.com/"><PinterestIcon /></Link>
+                  </li>
+                  <li className="list-unstyled">
+                    <Link href="https://twitter.com/"><TwitterIcon /></Link>
+                  </li>
+                </ColumnIcon>
+
+              <TeamDiv>
+                  <p>Termos e Condições Gerais de contratação política de privacidade</p>
+                &copy; {new Date().getFullYear()} Copyright by equipe Immobile <Link href="/"> Integração imóveis</Link>
+              </TeamDiv>
+
+            </Wrapper>
+        </Container>
+  );
+};
 
 export default Footer;

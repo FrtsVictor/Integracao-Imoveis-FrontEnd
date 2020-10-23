@@ -7,3 +7,7 @@
 [1021/215828.420:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
 [1021/230352.403:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
 [1021/235106.786:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+[1022/132122.898:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+[1022/153238.239:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+[1022/155539.917:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Daniel\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\9bdeb57f-020e-4728-91ba-f94afb825404: O sistema não pode encontrar o caminho especificado. (0x3)
+[1022/165944.250:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)

@@ -4,8 +4,7 @@ export const Title = styled.div`
     font-size: 30px;
     display: flex;
     align-items:center;
-    /* margin-left: 50px; */
-    /* justify-content:flex-start; */
+
 `;
 
 export const Container = styled.div`
