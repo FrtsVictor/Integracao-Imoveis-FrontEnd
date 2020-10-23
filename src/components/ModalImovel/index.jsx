@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
 // Carousel
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
@@ -67,6 +66,7 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
                   >
                     <FavoriteBorderSharpIcon />
                   </IconButton>
+
                 </FavIcon>
                 <MenuText>
                   {imovel.tipo}
@@ -94,11 +94,13 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
                   {imovel.endereco}
                 </MenuText>
                 <MenuText>
-                  <b> AreaUtil: </b>
-                  {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.areaUtil)}
+                  <b> Área útil: </b>
+                  {imovel.areaUtil}
+                  <p>m²</p>
                 </MenuText>
                 <MenuText>
                   observacoes:
+                  {' '}
                   {imovel.observacoes}
                 </MenuText>
 
@@ -116,9 +118,9 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
 
               <HouseIcons>
 
-                <InfoP>
+                {/* <InfoP>
                   {imovel.destaque === true ? <StarBorderIcon style={{ fontSize: 50 }} /> : ''}
-                </InfoP>
+                </InfoP> */}
 
                 <InfoP>
                   {imovel.tipo === 'Casa' ? <HomeIcon style={{ fontSize: 50 }} /> : <ApartmentIcon style={{ fontSize: 50 }} />}
