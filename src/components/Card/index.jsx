@@ -2,16 +2,16 @@ import React from 'react';
 
 // _______________Icons
 import ApartmentIcon from '@material-ui/icons/Apartment';
+import HomeIcon from '@material-ui/icons/Home';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import RoomIcon from '@material-ui/icons/Room';
 import BathtubIcon from '@material-ui/icons/Bathtub';
 import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
-import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
-import HomeIcon from '@material-ui/icons/Home';
-import IconButton from '@material-ui/core/IconButton';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import HomeWorkIcon from '@material-ui/icons/HomeWork';
 
-// Moral
+// Modal
 import ModalImovel from '../ModalImovel';
 
 // ApiConnection
@@ -19,7 +19,7 @@ import apiIntegracaoImoveis from '../../services/apiIntegracaoImoveis';
 
 // _______________Styles
 import {
-  CardContainer, HouseImg, CardP, Info, LineDiv, IconDiv, FavIcon, DivImg,
+  CardContainer, HouseImg, CardP, Info, LineDiv, IconDiv, FavIcon, DivImg, Row, IconLeft, IconRight,
 } from './styles';
 
 const Card = ({
@@ -53,32 +53,44 @@ const Card = ({
       <ModalImovel open={open} handleClose={handleClose} imovel={imovel} />
 
       <Info>
+
         <FavIcon>
-          <IconButton
-            color="default"
-            aria-label="add an alarm"
-            onClick={() => likeButton(imovel)}
-          >
-            <FavoriteBorderSharpIcon />
-          </IconButton>
+          <IconLeft>
+            {imovel.tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
+            {imovel.tipo === 'Casa' ? 'Casa' : 'APT'}
+          </IconLeft>
+
+          <IconRight>
+
+            <button
+              type="button"
+              onClick={() => likeButton(imovel)}
+            >
+              <FavoriteBorderIcon />
+            </button>
+          </IconRight>
+
         </FavIcon>
 
-        <CardP>
-          {imovel.tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
-          {imovel.tipo}
-        </CardP>
+        <Row>
 
-        <CardP>
-          <RoomIcon />
-          {imovel.cidade}
-          {' / '}
-          {imovel.bairro}
-        </CardP>
+          <CardP>
+            <RoomIcon />
+            {imovel.cidade}
+            {' / '}
+            {imovel.bairro}
+          </CardP>
 
-        <CardP>
-          <AttachMoneyIcon />
-          { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
-        </CardP>
+          <CardP>
+            <AttachMoneyIcon />
+            { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
+          </CardP>
+          <CardP>
+            <HomeWorkIcon />
+            { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valorCondominio)}
+          </CardP>
+
+        </Row>
 
         <LineDiv>
           <CardP>

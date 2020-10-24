@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const api = axios.create({
   baseURL: 'http://localhost:8080/',
@@ -6,18 +7,32 @@ const api = axios.create({
 
 const ApiImoveis = {
 
-  get: async () => (
-    api.get('api/imoveis')
-      .then((resp) => resp.data).catch((err) => console.log(err))
-  ),
+  get: async (page = 0) => {
+    try {
+      const response = await api.get(`api/imoveis?page=${page}`);
+      return response.data;
+    } catch (error) {
+      return console.log(error);
+    }
+  },
 
-  post: async (imovel) => (
-    api.post('api/imoveis', {
-      ...imovel,
-    })
-      .then((resp) => resp.data)
-      .catch((error) => console.log(error.response.data))
-  ),
+  post: async (imovel) => {
+    try {
+      const response = await api.post('api/imoveis', {
+        ...imovel,
+      });
+      swal('Sucesso', 'Imovel salvo com sucesso!', 'success');
+      return response.data;
+    } catch (error) {
+      if (error.response.status === 409) {
+        swal('Ops!', 'Você ja favoritou este imovel', 'error');
+        console.log(error);
+      }
+
+      return console.log(error.response.status);
+    }
+  },
+
 };
 
 export default ApiImoveis;
