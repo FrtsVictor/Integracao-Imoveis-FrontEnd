@@ -14,10 +14,17 @@ export const PapperContainer = styled.div`
     display: flex;
     width: 80vw;
     height: 90vh;
-    background-color:#FFF;
-    border: 2px solid #000;
+    border-radius: 10px;
     flex-wrap: wrap;
-    margin:  auto;
+    margin:  30px;
+    color:#03020c;
+    background-color: #ebebedee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 500ms;
+    margin-left:150px;
+
 `;
 
 export const ContainerUp = styled.div`
@@ -36,11 +43,20 @@ padding-bottom: 5%;
 `;
 
 export const RightMenuContainer = styled.div`
+//@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,300;1,400&display=swap" rel="stylesheet');
 width:30%;
 align-items: flex-end;
 display:grid;
 margin-left: 5%;
+margin-bottom:100%;
 grid-template-columns: 1fr;
+box-shadow: 5px 10px 8px #888888;
+//font-style: Roboto, cursive;
+font-weight: 400;
+
+
+
+
 `;
 
 export const FavIcon = styled.div`
@@ -73,8 +89,10 @@ height: 90%;
 export const HouseImg = styled.img.attrs((props) => ({
   src: props.urlImagem || NoImage,
 }))`
-    width: 100%;
-    height: 100%;
+    margin-left:140px;
+    width: 60%;
+    height: 60%;
+
 `;
 
 // House Bottom Info
@@ -82,13 +100,15 @@ export const HouseIcons = styled.div`
 display: flex;
 flex-direction:row;
 width: 100%;
-height: 50%;
+height: 40%;
 align-items: center;
 justify-content:center;
+
 
 `;
 
 export const HouseDetails = styled.div`
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 display:flex;
 width:100%;
 flex-wrap: wrap;
@@ -96,8 +116,9 @@ height: 50%;
 flex-direction: row;
 align-items: center;
 justify-content:center;
-`;
+font-family: 'Josefin Sans', cursive;
 
+`;
 export const DivIcons = styled.div`
 display: flex;
 flex-direction: row;
