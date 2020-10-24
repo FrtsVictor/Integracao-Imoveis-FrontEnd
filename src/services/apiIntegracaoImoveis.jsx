@@ -28,11 +28,39 @@ const ApiImoveis = {
         swal('Ops!', 'Você ja favoritou este imovel', 'error');
         console.log(error);
       }
-
       return console.log(error.response.status);
     }
   },
 
+  user: {
+    login: async (username, password) => {
+      try {
+        const response = await api.post('/login', {
+          username, password,
+        });
+        console.log('login', response);
+        return response;
+      } catch (error) {
+        return console.log(error);
+      }
+    },
+    getByUserName: async (username, token) => {
+      try {
+        const response = await api.get(`/api/username/${username}`);
+        console.log('login', response);
+        return { ...response.data, token };
+      } catch (error) {
+        return console.log(error);
+      }
+    },
+    // addImovel: async () => {
+    //   try {
+
+    //   } catch (error) {
+
+    //   }
+    // },
+  },
 };
 
 export default ApiImoveis;
