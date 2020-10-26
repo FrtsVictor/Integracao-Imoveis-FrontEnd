@@ -18,12 +18,13 @@ export const PapperContainer = styled.div`
     flex-wrap: wrap;
     margin:  30px;
     color:#03020c;
-    background-color: #ebebedee;
+    background-color: #c5cdd8;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 500ms;
     margin-left:150px;
+    border-right:1px solid black;
 
 `;
 
@@ -43,17 +44,16 @@ padding-bottom: 5%;
 `;
 
 export const RightMenuContainer = styled.div`
-//@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,300;1,400&display=swap" rel="stylesheet');
 width:30%;
 align-items: flex-end;
 display:grid;
 margin-left: 5%;
-margin-bottom:100%;
+margin-bottom:50px;
+margin-top:22px;
 grid-template-columns: 1fr;
 box-shadow: 5px 10px 8px #888888;
-//font-style: Roboto, cursive;
+font-style:italic;
 font-weight: 400;
-
 
 
 
@@ -80,7 +80,7 @@ width: 70%;
 height: 90%;
 
 && div{
-    background-color: white;
+    background-color:  #c5cdd8;
 }
 
 `;

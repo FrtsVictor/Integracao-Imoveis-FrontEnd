@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import Card from '../../components/Card';
+// import Card from '../../components/Card';
 // import { FiX } from 'react-icons/fi';
 import api from '../../services/api';
 

@@ -12,7 +12,7 @@ import BathtubIcon from '@material-ui/icons/Bathtub';
 import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import HomeIcon from '@material-ui/icons/Home';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';

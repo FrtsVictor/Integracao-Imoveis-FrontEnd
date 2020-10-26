@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../../components/Header';
 import apiIntegracao from '../../services/apiIntegracaoImoveis';
-import Footer from '../../components/Footerrrrr';
+import Footer from '../../components/Footer';
 import Pagination from '../../components/Pagination';
 
 import FavoriteCard from '../../components/FavoriteCard';

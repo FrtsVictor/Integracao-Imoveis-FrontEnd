@@ -56,7 +56,7 @@ span{
     }
 }
 form{
-    /* display: flex; */
+    display: flex;
 
 }
 
@@ -87,6 +87,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex: 2;
+
 
 
 input {

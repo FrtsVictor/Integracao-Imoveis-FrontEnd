@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Carousel from '../../components/Carousel';
+import Footer from '../../components/Footer';
 
 // import ButtonPOST from '../../components/BtnTestesApi/BtnPOST';
 // import ButtonGET from '../../components/BtnTestesApi/BtnGetAll';
@@ -60,6 +61,7 @@ const Home = () => {
           ))}
         </CardDiv>
       </Container>
+      <Footer />
     </>
   );
 };
