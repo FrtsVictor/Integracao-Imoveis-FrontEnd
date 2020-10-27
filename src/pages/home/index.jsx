@@ -5,7 +5,7 @@ import Card from '../../components/Card';
 import Carousel from '../../components/Carousel';
 import Footer from '../../components/Footer';
 
-// import ButtonPOST from '../../components/BtnTestesApi/BtnPOST';
+import ButtonPOST from '../../components/BtnTestesApi/BtnPOST';
 // import ButtonGET from '../../components/BtnTestesApi/BtnGetAll';
 
 import { Container, CardDiv } from './styles';
@@ -44,7 +44,7 @@ const Home = () => {
 
   return (
     <>
-      {/* <ButtonGET /> */}
+      <ButtonPOST />
       {/* <ButtonPOST />
       <ButtonGET /> */}
       <Header title="Home" />

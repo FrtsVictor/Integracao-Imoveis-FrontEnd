@@ -15,11 +15,10 @@ const Favoritos = () => {
   const [itemList, setItemList] = useState([]);
 
   const [getPage, setGetPage] = useState(0);
-
   const getPages = (pages) => setGetPage(pages);
 
   const getAll = useCallback(() => {
-    apiIntegracao.get(getPage)
+    apiIntegracao.imoveis.getAll(getPage)
       .then((resp) => {
         const pageable = {
           firstPage: resp.first,
@@ -28,7 +27,6 @@ const Favoritos = () => {
           totalPages: resp.totalPages,
           totalElements: resp.totalElements,
         };
-
         setPage(pageable);
         setItemList(resp.content);
       });
