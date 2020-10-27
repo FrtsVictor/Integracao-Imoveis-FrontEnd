@@ -6,7 +6,6 @@ import apiIntegracao from '../services/apiIntegracaoImoveis';
 const AuthContextIntegracao = createContext();
 
 const AuthProviderIntegracao = ({ children }) => {
-  const [token, setToken] = useState('');
   const [data, setData] = useState(() => {
     const user = localStorage.getItem('@Integracao:user');
     if (user) {
@@ -18,12 +17,12 @@ const AuthProviderIntegracao = ({ children }) => {
   const login = useCallback(
     (username, password) => {
       apiIntegracao.user.login(username, password)
-        .then((resp) => apiIntegracao.user.getByUserName(username, resp.data)
+        .then((resp) => (resp != null ? apiIntegracao.user.getByUserName(username, resp.data)
           .then((response) => {
             localStorage.setItem('@Integracao:user', JSON.stringify(response));
             setData({ response });
             console.log('tenreei');
-          }));
+          }) : null));
     }, [],
   );
 
@@ -51,40 +50,3 @@ function useAuth() {
 }
 
 export { AuthProviderIntegracao, useAuth };
-
-// const login = useCallback(
-//     (username, password) => {
-//       apiIntegracao.user.login(username, password)
-//         .then((resp) => {
-//           const user = {
-//             username,
-//             token: resp.data,
-//           };
-//           localStorage.setItem('@Integracao:user', JSON.stringify(user));
-//           setData({ user });
-//         });
-//     }, [],
-//   );
-
-// const getUserByUsernames = useCallback(
-//   (username) => {
-//     apiIntegracao.user.getByUserName(username);
-
-//     localStorage.setItem('@Integracao:user', JSON.stringify(user));
-//     setData({ user });
-//   }, [],
-// );
-
-// const login = useCallback(
-//     (username, password) => {
-//       apiIntegracao.user.login(username, password)
-//         .then((resp) => {
-//           const user = {
-//             username,
-//             token: resp.data,
-//           };
-//           localStorage.setItem('@Integracao:user', JSON.stringify(user));
-//           setData({ user });
-//         });
-//     }, [],
-//   );
