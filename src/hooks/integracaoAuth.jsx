@@ -1,39 +1,38 @@
 import React, {
-  createContext, useState, useContext, useCallback,
+  createContext, useCallback, useContext,
 } from 'react';
+import { useUser } from '../components/core/UserProvider';
 import apiIntegracao from '../services/apiIntegracaoImoveis';
+import { LOCAL_STORAGE_KEYS } from '../constants';
 
 const AuthContextIntegracao = createContext();
 
 const AuthProviderIntegracao = ({ children }) => {
-  const [data, setData] = useState(() => {
-    const user = localStorage.getItem('@Integracao:user');
-    if (user) {
-      return { user: JSON.parse(user) };
-    }
-    return {};
-  });
+  const { user, setUser } = useUser();
 
   const login = useCallback(
-    (username, password) => {
-      apiIntegracao.user.login(username, password)
-        .then((resp) => (resp != null ? apiIntegracao.user.getByUserName(username, resp.data)
-          .then((response) => {
-            localStorage.setItem('@Integracao:user', JSON.stringify(response));
-            setData({ response });
-            console.log('tenreei');
-          }) : null));
+    async (username, password) => {
+      const authResponse = await apiIntegracao.user.login(username, password);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.userAuthRoken, authResponse.data);
+
+      if (authResponse) {
+        const userResponse = await apiIntegracao.user.getByUserName(username, authResponse.data);
+
+        setUser(userResponse);
+      }
     }, [],
   );
 
   const logout = useCallback(() => {
-    localStorage.removeItem('@Integracao:user');
-    setData({});
+    // TODO: refatorar para retornar valor equivalente ao
+    // initialValue de UserProvider ao inves de null
+    setUser(null);
   }, []);
 
   return (
     <AuthContextIntegracao.Provider
-      value={{ user: data.user, login, logout }}
+    // TODO: find a place to user, duplicated with UserProvider
+      value={{ user, login, logout }}
     >
       {children}
     </AuthContextIntegracao.Provider>
