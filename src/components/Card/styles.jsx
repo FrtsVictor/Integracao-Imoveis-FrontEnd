@@ -2,23 +2,17 @@ import styled from 'styled-components';
 import DefaultImg from '../../assets/casa1.jpg';
 
 export const CardContainer = styled.div`
-    margin-top: 20px;
+    margin-top: 30px;
+    display: inline-flex;
     width: 43vw;
     height: 30vh;
     background-color:#ebebed;
-    min-width: 450px;
+    min-width: 380px;
     min-height: 150px;
     max-height: 200px;
     border-radius: 10px;
     border: 0.3px solid #cccccc;
     box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.6);
-    display: flex;
-    flex-wrap: wrap;
-    /* @media (min-width: 50%) {
-
-
-  } */
-
 
     &:hover{
         transform: scale(1.01);
