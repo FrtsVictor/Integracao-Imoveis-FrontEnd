@@ -18,17 +18,17 @@ const Footer = () => {
                 <h5>Siga a gente</h5>
                 <ColumnIcon>
                   <li className="list-unstyled">
-                    <Link href="https://www.instagram.com/?hl=pt-br"><InstagramIcon /></Link>
+                    <Link href="https://www.instagram.com/immobilesoftware/"><InstagramIcon /></Link>
                   </li>
                   <li className="list-unstyled">
 
-                    <Link href="https://www.facebook.com/"><FacebookIcon /></Link>
+                    <Link href="https://www.facebook.com/immobilesoftware"><FacebookIcon /></Link>
                   </li>
                   <li className="list-unstyled">
                     <Link href="https://br.pinterest.com/"><PinterestIcon /></Link>
                   </li>
                   <li className="list-unstyled">
-                    <Link href="https://twitter.com/"><TwitterIcon /></Link>
+                    <Link href="https://www.linkedin.com/company/immobile-software"><TwitterIcon /></Link>
                   </li>
                 </ColumnIcon>
 

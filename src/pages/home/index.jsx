@@ -45,8 +45,6 @@ const Home = () => {
   return (
     <>
       <ButtonPOST />
-      {/* <ButtonPOST />
-      <ButtonGET /> */}
       <Header title="Home" />
       <Container>
         <Carousel />

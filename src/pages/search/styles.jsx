@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
+    font-family: 'Roboto', cursive;
 `;
 export const Filter = styled.div`
     display: flex;
