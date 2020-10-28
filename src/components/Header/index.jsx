@@ -5,7 +5,7 @@ import {
   Container, LinksContainer, LogoContainer, SearchContainer,
 } from './styles';
 import logoImg from '../../assets/logo_1.png';
-import { useUser } from '../core/UserProvider';
+import { useUser } from '../core/UserProvider/useUser';
 
 const Header = () => {
   const history = useHistory();

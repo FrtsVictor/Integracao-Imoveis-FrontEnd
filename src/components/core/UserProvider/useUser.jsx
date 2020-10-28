@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
 import { useContext } from 'react';
-import { UserContext } from '.';
+import { UserContext } from './UserProvider';
 
 export const useUser = () => {
   const user = useContext(UserContext);

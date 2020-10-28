@@ -1,7 +1,7 @@
 import React, {
   createContext, useCallback, useContext,
 } from 'react';
-import { useUser } from '../components/core/UserProvider';
+import { useUser } from '../components/core/UserProvider/useUser';
 import apiIntegracao from '../services/apiIntegracaoImoveis';
 import { LOCAL_STORAGE_KEYS } from '../constants';
 
