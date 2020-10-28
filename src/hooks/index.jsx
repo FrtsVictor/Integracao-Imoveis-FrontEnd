@@ -1,10 +1,14 @@
 import React from 'react';
+import { UserProvider } from '../components/core/UserProvider';
 import { AuthProviderIntegracao } from './integracaoAuth';
 
 const AppProvider = ({ children }) => (
-  <AuthProviderIntegracao>
-    {children}
-  </AuthProviderIntegracao>
+  <UserProvider>
+    <AuthProviderIntegracao>
+      {children}
+    </AuthProviderIntegracao>
+  </UserProvider>
+
 );
 
 export default AppProvider;
