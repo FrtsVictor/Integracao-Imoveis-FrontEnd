@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  font-family: 'Oxygen', sans-serif;
   margin-top:100px;
   bottom: 0;
   left: 0;

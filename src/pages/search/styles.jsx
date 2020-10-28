@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     display: flex;
     font-family: 'Oxygen', sans-serif;
+
 `;
 export const Filter = styled.div`
     display: flex;
@@ -10,6 +11,9 @@ export const Filter = styled.div`
     width: 20%;
     border-right: 1px solid #ccc;
     margin: 10px;
+    background-color:#F0F1F2;
+    margin-top: -45px;
+    align-items: center;
 
     h4{
         margin-top: 15px;
@@ -18,11 +22,17 @@ export const Filter = styled.div`
 
     label{
         margin-left: 5px;
+
     }
 `;
 export const InputType = styled.div`
     display: inline;
     flex-direction: column;
+    margin-right:80px;
+    
+
+
+
 
 `;
 
@@ -32,10 +42,12 @@ export const Price = styled.div`
     input {
     width: 30%;
 
+
     }
 `;
 export const PriceActive = styled.div`
     display: flex;
+
 
     div {
         margin-left: auto;
@@ -59,14 +71,12 @@ export const PriceActive = styled.div`
 export const CardSection = styled.div`
     display:flex;
     flex-direction: column;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-
+    width: 100%;
 
     a {
         text-decoration: none;
         color: black;
+
     }
 
     span {
@@ -74,30 +84,3 @@ export const CardSection = styled.div`
     }
 `;
 
-
-export const Info = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-
-    p {
-        margin-top: 5px;
-
-    }
-    .nome{
-
-        &:hover{
-            cursor: pointer;
-            color: #aaa;
-        }
-    }
-    .categoria{
-        font-size: 12px;
-    }
-
-    h3{
-        margin-top: auto;
-    }
-
-
-`;

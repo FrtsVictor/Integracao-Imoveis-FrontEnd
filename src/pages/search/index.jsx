@@ -61,13 +61,6 @@ const Search = () => {
             let filtered = apiList;
 
             try {
-                if (query.length > 0) {
-                  filtered = filtered.filter((card) => (
-                    query.some((q) => card.cidadeUrl.toLowerCase().includes(q)
-                      || card.nomeTipo.toLowerCase().includes(q)
-                      || card.tipo.toLowerCase().includes(q))
-                  ));
-                }
 
                 if (filters.length > 0) {
                     filtered = filtered.filter((apiList) => (
@@ -137,6 +130,7 @@ const Search = () => {
                 <Filter>
                     <h2>Filtros</h2>
                     <h4>Tipo</h4>
+                    <br />
                     <InputType>
                     <input
                         type="checkbox"
@@ -146,6 +140,7 @@ const Search = () => {
                         value="L"
                     />
                     <label htmlFor="">Locação</label>
+                    <br />
 
                     <input
                         type="checkbox"
@@ -155,6 +150,7 @@ const Search = () => {
                         onClick={e => addFilter(e.target)}
                     />
                     <label htmlFor="">Venda</label>
+                    <br />
 
                     <input
                         type="checkbox"
@@ -164,6 +160,7 @@ const Search = () => {
                         onClick={e => addFilterType(e.target)}
                     />
                     <label htmlFor="">Casa</label>
+                    <br />
 
                     <input
                         type="checkbox"

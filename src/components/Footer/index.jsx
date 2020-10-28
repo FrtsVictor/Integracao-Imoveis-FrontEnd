@@ -34,7 +34,7 @@ const Footer = () => {
 
               <TeamDiv>
                 <p>Termos e Condições Gerais de contratação política de privacidade</p>
-                &copy; {new Date().getFullYear()} Copyright by equipe Immobile <Link href="/"> Integração imóveis</Link>
+                &copy; {new Date().getFullYear()} Copyright by equipe Immobile <Link href="https://immobile.software/"> Integração imóveis</Link>
               </TeamDiv>
 
             </Wrapper>
