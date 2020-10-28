@@ -53,10 +53,10 @@ const Home = () => {
         <CardDiv>
           { apiList.map((imovel) => (
             <div>
-              <Card
+              {/* <Card
                 imovel={{ ...imovel }}
                 urlImagem={imovel.urlImagem}
-              />
+              /> */}
             </div>
           ))}
         </CardDiv>

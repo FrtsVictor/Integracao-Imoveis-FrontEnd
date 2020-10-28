@@ -67,6 +67,7 @@ const Card = ({
               onClick={() => likeButton(imovel)}
             >
               <FavoriteBorderIcon />
+              < br/>
             </button>
           </IconRight>
 
@@ -79,12 +80,13 @@ const Card = ({
             {imovel.cidade}
             {' / '}
             {imovel.bairro}
-          </CardP>
+          </CardP> < br/>
 
           <CardP>
             <AttachMoneyIcon />
+
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
-          </CardP>
+          </CardP> < br/>
           <CardP>
             <HomeWorkIcon />
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valorCondominio)}

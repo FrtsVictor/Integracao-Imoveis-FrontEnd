@@ -68,11 +68,7 @@ export const LogoContainer = styled.div`
 align-content:center;
 display:flex;
 flex:1;
-margin-top:15px;
-margin-left:100px;
-
-
-
+margin:15px;
 
 img{
         /* position:flex; */
