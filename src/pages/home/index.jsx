@@ -52,7 +52,7 @@ const Home = () => {
         <Carousel />
         <CardDiv>
           { apiList.map((imovel) => (
-            <div>
+            <div key={imovel.id}>
               <Card
                 imovel={{ ...imovel }}
                 urlImagem={imovel.urlImagem}
