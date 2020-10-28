@@ -18,7 +18,7 @@ const Favoritos = () => {
   const getPages = (pages) => setGetPage(pages);
 
   const getAll = useCallback(() => {
-    apiIntegracao.imoveis.getAll(getPage)
+    apiIntegracao.getAll(getPage)
       .then((resp) => {
         const pageable = {
           firstPage: resp.first,
