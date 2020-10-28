@@ -13,8 +13,6 @@ import Container from '@material-ui/core/Container';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/integracaoAuth';
 
-import apiIntegraao from '../../services/apiIntegracaoImoveis';
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -45,25 +43,16 @@ export default function SignIn() {
   const history = useHistory();
   const { login } = useAuth();
 
-  //   function login(user, pass) {
-  //     apiIntegraao.user.login(user, pass)
-  //       .then((resp) => console.log(
-  //         'resp', resp.request.status,
-  //         'Token', resp.data,
-  //       ));
-  //   }
-
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!username) return;
-    if (!password) return;
+    if (!username || !password) return;
 
     setLoading(true);
 
     try {
       await login(username, password);
       console.log('Login Sucess');
-    //   history.push('/favoritos');
+      history.push('/favoritos');
     } catch (error) {
       console.log('Login  error', error);
     } finally {
