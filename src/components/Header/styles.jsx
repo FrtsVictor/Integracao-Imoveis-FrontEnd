@@ -8,12 +8,14 @@ export const Title = styled.div`
 `;
 
 export const Container = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
     display: flex;
     height: 22vh;
     flex-wrap:wrap;
-    /* justify-content: space-between; */
     margin-bottom: 45px;
     border-bottom: 1px solid #efefef;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: bold;
 `;
 
 export const LinksContainer = styled.div`

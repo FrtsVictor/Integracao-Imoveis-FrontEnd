@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    font-family: 'Roboto', cursive;
+    font-family: 'Oxygen', sans-serif;
 `;
 export const Filter = styled.div`
     display: flex;
@@ -20,11 +20,17 @@ export const Filter = styled.div`
         margin-left: 5px;
     }
 `;
+export const InputType = styled.div`
+    display: inline;
+    flex-direction: column;
+
+`;
+
 export const Price = styled.div`
     display: flex;
     gap: 10px;
     input {
-        width: 30%;
+    width: 30%;
 
     }
 `;
@@ -68,16 +74,6 @@ export const CardSection = styled.div`
     }
 `;
 
-export const Blur = styled.div`
-    display: flex;
-    flex-direction: column;
-
-    #unavailable{
-        margin-left: auto;
-        font-size: 10px;
-    }
-
-`;
 
 export const Info = styled.div`
     display: flex;

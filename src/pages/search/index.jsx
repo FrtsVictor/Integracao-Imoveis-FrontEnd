@@ -4,7 +4,7 @@ import Card from '../../components/Card';
 import { FiX } from 'react-icons/fi';
 import api from '../../services/api';
 import Footer from '../../components/Footer'
-import { Container, Filter, Price, PriceActive, CardSection } from './styles';
+import { Container, Filter, Price, PriceActive, CardSection, InputType } from './styles';
 import Header from '../../components/Header';
 // ________________________________________________________________________________
 const Search = () => {
@@ -12,11 +12,9 @@ const Search = () => {
 
     const [apiList, setApiList] = useState([]);
     const history = useHistory();
-    const [property, setProperty] = useState(['']);
     const [filteredproperty, setFilteredProperty] = useState(['']);
-    const [categories, setType] = useState([]);
-    const [filters, setFilters] = useState([]);
-    const [filtersType, setFiltersType] = useState([]);
+    const [filters, setFilters] = useState([]); // Estado para filtro de Locação ou venda
+    const [filtersType, setFiltersType] = useState([]); // Estado para filtro de casa ou Apt
     const [activePriceFilter, setActivePriceFilter] = useState(false);
     const [minValue, setMinValue] = useState();
     const [maxValue, setMaxValue] = useState();
@@ -48,13 +46,13 @@ const Search = () => {
     }, []);
 
 
-    const loadProperty = useCallback(
-        async () => {
-            const response = await api.get('tipo');
+    // const loadProperty = useCallback(
+    //     async () => {
+    //         const response = await api.get('tipo');
 
-            setProperty(response.data);
-        }, [],
-    );
+    //         setProperty(response.data);
+    //     }, [],
+    // );
 
     const loadFiltered = useCallback(
         () => {
@@ -65,10 +63,10 @@ const Search = () => {
             try {
                 if (query.length > 0) {
                   filtered = filtered.filter((card) => (
-                    query.some((q) => card.cidade.toLowerCase().includes(q)
-                    //   || card.nomeTipo.toLowerCase().includes(q)
-                    //   || card.tipo.toLowerCase().includes(q))
-                  )));
+                    query.some((q) => card.cidadeUrl.toLowerCase().includes(q)
+                      || card.nomeTipo.toLowerCase().includes(q)
+                      || card.tipo.toLowerCase().includes(q))
+                  ));
                 }
 
                 if (filters.length > 0) {
@@ -139,6 +137,7 @@ const Search = () => {
                 <Filter>
                     <h2>Filtros</h2>
                     <h4>Tipo</h4>
+                    <InputType>
                     <input
                         type="checkbox"
                         id=""
@@ -174,7 +173,7 @@ const Search = () => {
                         onClick={e => addFilterType(e.target)}
                     />
                     <label htmlFor="">Apartamento</label>
-
+                    </InputType>
 
 
                     <h4>Preço</h4>
@@ -212,13 +211,14 @@ const Search = () => {
                                 <FiX /><span>remover</span>
                             </div>
 
-
                         </PriceActive>
+
                     }
+
                 </Filter>
 
                 <CardSection>
-                    <p><strong>Resultado da pesquisa: </strong>{searchQuery.join(' ')}</p>
+                    <p><strong>Resultado da pesquisa: </strong></p>
 
 
                     {filteredproperty.map((imovel) => (
