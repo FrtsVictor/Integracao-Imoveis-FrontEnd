@@ -5,9 +5,12 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import PersonIcon from '@material-ui/icons/Person';
 import { Container, LinksContainer, LogoContainer } from './styles';
 import logoImg from '../../assets/logo_1.png';
+import { useUser } from '../core/UserProvider/useUser';
 
 const Header = () => {
 
+
+const { user: { username } } = useUser();
 
   return (
     <>
@@ -15,6 +18,28 @@ const Header = () => {
         <LogoContainer>
           <Link to="/Home"><img src={logoImg} alt="" /></Link>
         </LogoContainer>
+
+
+        <SearchContainer>
+
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            history.push({
+              pathname: '/search',
+              search: query.split(' ').join('&'),
+            });
+            setQuery('');
+          }}
+          >
+            <input
+              type="text"
+              placeholder="Pesquise seu imóvel aqui"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </form>
+
+        </SearchContainer>
 
 
         <LinksContainer>
@@ -31,10 +56,13 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/Login">
-                Entrar
-                <PersonIcon />
-              </Link>
+              {(username && <span>{username}</span>)
+               || (
+               <Link to="/Login">
+                 Entrar
+                 <PersonIcon />
+               </Link>
+               )}
 
             </li>
 

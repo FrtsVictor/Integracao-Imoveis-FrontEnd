@@ -61,7 +61,6 @@ const Card = ({
           </IconLeft>
 
           <IconRight>
-
             <button
               type="button"
               onClick={() => likeButton(imovel)}
@@ -70,7 +69,6 @@ const Card = ({
               < br/>
             </button>
           </IconRight>
-
         </FavIcon>
 
         <Row>
@@ -95,29 +93,30 @@ const Card = ({
         </Row>
 
         <LineDiv>
-          <CardP>
-            <IconDiv>
+          <IconDiv>
+            <CardP>
               <BathtubIcon />
               {imovel.banheiros}
-            </IconDiv>
-          </CardP>
+            </CardP>
+          </IconDiv>
 
-          <CardP>
-            <IconDiv>
+          <IconDiv>
+            <CardP>
               <HotelIcon />
               {imovel.dormitorios}
-            </IconDiv>
-          </CardP>
+            </CardP>
+          </IconDiv>
 
-          <CardP>
-            <IconDiv>
+          <IconDiv>
+            <CardP>
               <ShuffleSharpIcon />
               {(imovel.transacao === 'V' ? 'Venda' : 'Locação')}
-            </IconDiv>
-          </CardP>
-
+            </CardP>
+          </IconDiv>
         </LineDiv>
+
       </Info>
+
     </CardContainer>
   );
 };

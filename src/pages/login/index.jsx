@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,24 +7,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-function Login() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="home">
-        Integração Imóveis
-      </Link>
-      {' '}
-      {new Date().getFullYear()}
-      .
-    </Typography>
-  );
-}
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../hooks/integracaoAuth';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,26 +36,51 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
+  const { login } = useAuth();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (!username || !password) return;
+
+    setLoading(true);
+
+    try {
+      await login(username, password);
+      console.log('Login Sucess');
+      history.push('/favoritos');
+    } catch (error) {
+      console.log('Login  error', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-        </Avatar>
+        <Avatar className={classes.avatar} />
         <Typography component="h1" variant="h5">
           Entrar
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleLogin}>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Usuário ou e-mail"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Usuário"
+            name="username"
+            autoComplete="usename"
             autoFocus
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -79,7 +91,9 @@ export default function SignIn() {
             label="Sua senha"
             type="password"
             id="password"
+            value={password}
             autoComplete="current-password"
+            onChange={(e) => setPassword(e.target.value)}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -92,7 +106,7 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
           >
-            Entrar
+            {loading ? 'Loading' : 'Entrar'}
           </Button>
           <Grid container>
             <Grid item xs>

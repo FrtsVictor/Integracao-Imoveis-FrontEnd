@@ -53,10 +53,9 @@ const BtnGetAll = () => {
 
   const printRequest = useCallback(
     async () => {
-      await apiImoveis.post(objectTest)
-        .then((resp) => console.log(resp))
-        .catch((err) => console.error.arguments('asd', err));
-    }, [acessToken],
+      await apiImoveis.imoveis.user.getByUserName('victor');
+      // .then((resp) => console.log('loginTest', resp.data));
+    }, [],
   );
 
   return (
