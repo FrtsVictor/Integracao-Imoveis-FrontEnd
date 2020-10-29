@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../../components/Header';
-import apiIntegracao from '../../services/apiIntegracaoImoveis';
+import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
 import Footer from '../../components/Footer';
 import Pagination from '../../components/Pagination';
+import { useUser } from '../../components/core/UserProvider/useUser';
 
 import FavoriteCard from '../../components/FavoriteCard';
 
@@ -11,37 +12,40 @@ import {
 } from './styles';
 
 const Favoritos = () => {
-  const [page, setPage] = useState([]);
+  const { user: { id } } = useUser();
+  const [pageable, setPageable] = useState([]);
   const [itemList, setItemList] = useState([]);
+  const [atualPage, setAtualPage] = useState(0);
+  const [update, setUpdate] = useState();
 
-  const [getPage, setGetPage] = useState(0);
-  const getPages = (pages) => setGetPage(pages);
+  const updateScreen = (screen) => setUpdate(screen);
+  const getPages = (pages) => setAtualPage(pages);
 
-  const getAll = useCallback(() => {
-    apiIntegracao.getAll(getPage)
-      .then((resp) => {
-        const pageable = {
-          firstPage: resp.first,
-          lastPage: resp.last,
-          atualPage: resp.number,
-          totalPages: resp.totalPages,
-          totalElements: resp.totalElements,
+  const getPaginationRequest = useCallback(() => {
+    apiIntegracaoImvs.user.getPageableFavs(atualPage, id)
+      .then(({ data }) => {
+        const pagination = {
+          firstPage: data.first,
+          lastPage: data.last,
+          atualPage: data.number,
+          totalPages: data.totalPages,
+          totalElements: data.totalElements,
         };
-        setPage(pageable);
-        setItemList(resp.content);
+        setPageable(pagination);
+        setItemList(data.content);
       });
-  }, [page, getPage]);
+  }, [pageable, atualPage]);
 
   useEffect(() => {
-    getAll();
-  }, [getPage]);
+    getPaginationRequest();
+  }, [atualPage, update]);
 
   return (
     <>
       <Header title="Favoritos" />
 
       <PageDiv>
-        <Pagination getPages={getPages} pageable={page} />
+        <Pagination getPages={getPages} pageable={pageable} />
       </PageDiv>
 
       <Container>
@@ -49,7 +53,7 @@ const Favoritos = () => {
         <CardContainer>
           {itemList.map((imovel) => (
             <CardDiv>
-              <FavoriteCard imovel={imovel} />
+              <FavoriteCard imovel={imovel} updateScreen={updateScreen} update={update} />
             </CardDiv>
           ))}
         </CardContainer>
