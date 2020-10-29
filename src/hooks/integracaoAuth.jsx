@@ -2,8 +2,9 @@ import React, {
   createContext, useCallback, useContext,
 } from 'react';
 import { useUser } from '../components/core/UserProvider/useUser';
-import apiIntegracao from '../services/apiIntegracaoImoveis';
 import { LOCAL_STORAGE_KEYS } from '../constants';
+import { apiIntegracaoImvs } from '../services/apiIntegracaoImoveis';
+import { apiImobile } from '../services/apiImobile';
 
 const AuthContextIntegracao = createContext();
 
@@ -12,15 +13,18 @@ const AuthProviderIntegracao = ({ children }) => {
 
   const login = useCallback(
     async (username, password) => {
-      const authResponse = await apiIntegracao.user.login(username, password);
-      localStorage.setItem(LOCAL_STORAGE_KEYS.userAuthRoken, authResponse.data);
+      const authResponse = await apiIntegracaoImvs.user.login(username, password);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.userAuthToken, authResponse.data);
 
       if (authResponse) {
-        const userResponse = await apiIntegracao.user.getByUserName(username, authResponse.data);
+        const userResponse = await apiIntegracaoImvs.user
+          .getByUserName(username, authResponse.data);
 
         setUser(userResponse);
+
+        await apiImobile.getToken();
       }
-    }, [],
+    },
   );
 
   const logout = useCallback(() => {
