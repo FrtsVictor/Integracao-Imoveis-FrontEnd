@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import SearchIcon from '@material-ui/icons/Search';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import PersonIcon from '@material-ui/icons/Person';
-import {
-  Container, LinksContainer, LogoContainer, SearchContainer,
-} from './styles';
+import { Container, LinksContainer, LogoContainer } from './styles';
 import logoImg from '../../assets/logo_1.png';
 import { useUser } from '../core/UserProvider/useUser';
 
 const Header = () => {
-  const history = useHistory();
-  const [query, setQuery] = useState('');
 
-  const { user: { username } } = useUser();
 
-  // const getUser = () => { // pra mostrar o usuário logado, aguardando api com as rotas
-  //   let user = JSON.parse(localStorage.getItem('Rota:user'))
-  //   return user
-  // }
+const { user: { username } } = useUser();
 
   return (
     <>
@@ -24,6 +18,7 @@ const Header = () => {
         <LogoContainer>
           <Link to="/Home"><img src={logoImg} alt="" /></Link>
         </LogoContainer>
+
 
         <SearchContainer>
 
@@ -46,11 +41,19 @@ const Header = () => {
 
         </SearchContainer>
 
+
         <LinksContainer>
 
           <ul>
+          <li>
+              <Link to="/search">Pesquisar
+              <SearchIcon />
+              </Link>
+            </li>
             <li>
-              <Link to="/Favoritos">Favoritos</Link>
+              <Link to="/Favoritos">Favoritos
+                <FavoriteBorderIcon />
+              </Link>
             </li>
             <li>
               {(username && <span>{username}</span>)

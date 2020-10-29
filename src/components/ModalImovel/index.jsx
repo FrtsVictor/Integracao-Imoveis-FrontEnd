@@ -37,17 +37,23 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
         }}
       >
         <Fade in={open}>
+
           <PapperContainer>
 
             <IconButton
               style={{
-                display: 'flex', justifyContent: 'flex-end', color: 'red', alignItems: 'flex-end', flexDirection: 'flex-end',
+                 display: 'flex',
+                justifyContent: 'flex-end',
+                color: 'rgb(38,97,151)',
+                alignItems: 'right',
+                flexDirection: 'row-reverse',
               }}
               type="button"
               onClick={() => handleClose()}
             >
               <CloseIcon />
             </IconButton>
+
             <ContainerUp>
               <CarouselContainer>
                 <AwesomeSlider>

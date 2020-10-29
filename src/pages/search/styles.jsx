@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    font-family: 'Roboto', cursive;
+    font-family: 'Oxygen', sans-serif;
+
 `;
 export const Filter = styled.div`
     display: flex;
@@ -10,26 +11,52 @@ export const Filter = styled.div`
     width: 20%;
     border-right: 1px solid #ccc;
     margin: 10px;
+    background-color:#F0F1F2;
+    margin-top: -45px;
+    align-items: center;
 
-    h4{
-        margin-top: 15px;
-        margin-bottom: 5px;
+    h2{
+        margin: 25px 5px;
+        font-size:1.9rem;
+    }
+    h3{
+        margin: 25px 5px;
+        font-size:1.2rem;
+
     }
 
-    label{
-        margin-left: 5px;
+       label{
+        font-size:20px;
+        font-style:italic;
+        margin:5px;
+
     }
 `;
+export const InputType = styled.div`
+    display: inline;
+    flex-direction: column;
+    margin-right:80px;
+    margin-bottom:50px;
+
+
+`;
+
 export const Price = styled.div`
     display: flex;
     gap: 10px;
-    input {
+
+        input {
+        font-size:12px;
+        font-family: 'IBM Plex Mono', monospace;
         width: 30%;
+        cursor: pointer;
 
     }
 `;
 export const PriceActive = styled.div`
     display: flex;
+    cursor: pointer;
+
 
     div {
         margin-left: auto;
@@ -51,16 +78,20 @@ export const PriceActive = styled.div`
 `;
 
 export const CardSection = styled.div`
-    display:flex;
-    flex-direction: column;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1%;
+    width: 80%;
+    height:50%;
+    margin-top:-50px;
+
 
 
     a {
         text-decoration: none;
         color: black;
+
     }
 
     span {
@@ -68,40 +99,3 @@ export const CardSection = styled.div`
     }
 `;
 
-export const Blur = styled.div`
-    display: flex;
-    flex-direction: column;
-
-    #unavailable{
-        margin-left: auto;
-        font-size: 10px;
-    }
-
-`;
-
-export const Info = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-
-    p {
-        margin-top: 5px;
-
-    }
-    .nome{
-
-        &:hover{
-            cursor: pointer;
-            color: #aaa;
-        }
-    }
-    .categoria{
-        font-size: 12px;
-    }
-
-    h3{
-        margin-top: auto;
-    }
-
-
-`;
