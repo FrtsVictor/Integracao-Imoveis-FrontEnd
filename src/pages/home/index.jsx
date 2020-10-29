@@ -6,41 +6,55 @@ import Carousel from '../../components/Carousel';
 import Footer from '../../components/Footer';
 
 import ButtonPOST from '../../components/BtnTestesApi/BtnPOST';
-// import ButtonGET from '../../components/BtnTestesApi/BtnGetAll';
+import Pagination from '../../components/PaginationHome';
 
 import { Container, CardDiv } from './styles';
-
-import api from '../../services/api';
+import { apiImobile } from '../../services/apiImobile';
 
 const Home = () => {
-  // Test api __________________________________________________
-  const acessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZExvZ2luIjoiMzlmODExOWItYzA1OC04NTNjLTM3ZjMtYmUxYjE0NTMzZjA3IiwiaWRBZG1pbmlzdHJhZG9yYSI6IjRmODM1Y2JhLTdjOWMtNGI5OS1hNGYzLTAzZmNiMmI2MTQyZCIsImlkUGVzc29hIjoiMzlmODExOWItYmZjNC0yMDBlLTY3MzItOWUyMzVjZGI0M2Q0Iiwibm9tZSI6IlBhdWxvIENlc2FyIiwiZW1haWwiOiJkZW5pc2UuZHNuLmltYkBhbHRlcmRhdGEuY29tLmJyIiwicGVyZmlsIjoiQ29ycmV0b3IiLCJ1cmxJbWFnZW0iOiJodHRwczovL3dlYi1pbW1vYmlsZXdlYi5zMy5hbWF6b25hd3MuY29tL2NvcnJldGFnZW0vcHVibGljYS80ZjgzNWNiYS03YzljLTRiOTktYTRmMy0wM2ZjYjJiNjE0MmQvY29ycmV0b3I2MzczNzU5OTE2Njc2MzMyNzAucG5nIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDEyLyJ9.31Px5-gjnIzQDaEHsAmxs71rXmeijg75fOgk9jzd9UQ';
-
-  const [apiList, setApiList] = useState([]);
-
-  const config = {
-    headers: { Authorization: `bearer ${acessToken}` },
+  const PageCount = (qtdItems) => {
+    let Qtdpages = Math.trunc(qtdItems / 4);
+    const n = qtdItems % 4;
+    if (n) {
+      Qtdpages += 1;
+      return Qtdpages;
+    }
+    return Qtdpages;
   };
 
-  const loadList = useCallback(
-    async () => {
-      try {
-        const resp = await api.post('Imovel/obter-lista', {}, config);
-        const test = resp.data.content.listaPaginada;
-        setApiList(test);
-        console.log(test);
-        console.log('LoadList', apiList);
-      } catch (error) {
-        console.log(error);
-      }
-    }, [],
-  );
+  const [pageable, setPageable] = useState({
+    paginacao: {
+      itensPorPagina: 4,
+      paginaAtual: 0,
+      totalPaginas: 0,
+    },
+  });
 
-  // _____________________________________________________________
+  const [itemList, setItemList] = useState([]);
+  const [atualPage, setAtualPage] = useState(1);
+
+  const getPages = (pages) => setAtualPage(pages);
+
+  const getPaginationRequest = useCallback(() => {
+    apiImobile.getImoveis(pageable)
+      .then(({ data: { content } }) => {
+        const totalPages = PageCount(content.totalItens);
+        const pagination = {
+          paginacao: {
+            itensPorPagina: 4,
+            paginaAtual: atualPage,
+            totalPaginas: totalPages || 0,
+          },
+        };
+        console.log(pagination);
+        setPageable(pagination);
+        setItemList(content.listaPaginada);
+      });
+  }, [pageable, atualPage]);
 
   useEffect(() => {
-    loadList();
-  }, []);
+    getPaginationRequest();
+  }, [atualPage]);
 
   return (
     <>
@@ -48,16 +62,19 @@ const Home = () => {
       <Header title="Home" />
       <Container>
         <Carousel />
-        <CardDiv>
-          { apiList.map((imovel) => (
-            <div key={imovel.id}>
-              <Card
-                imovel={{ ...imovel }}
-                urlImagem={imovel.urlImagem}
-              />
-            </div>
-          ))}
-        </CardDiv>
+        <Pagination pageable={pageable} getPages={getPages} />
+
+        {itemList ? (
+          <CardDiv>
+            { itemList.map((imovel) => (
+              <div key={imovel.id}>
+                <Card
+                  imovel={{ ...imovel }}
+                />
+              </div>
+            ))}
+          </CardDiv>
+        ) : ''}
       </Container>
       <Footer />
     </>
