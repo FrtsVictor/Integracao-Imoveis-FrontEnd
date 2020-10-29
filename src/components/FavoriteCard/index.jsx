@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -7,8 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import DeleteIcon from '@material-ui/icons/Delete';
 
-import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import BathtubIcon from '@material-ui/icons/Bathtub';
 import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
@@ -16,26 +16,20 @@ import ApartmentIcon from '@material-ui/icons/Apartment';
 import HomeIcon from '@material-ui/icons/Home';
 import DefaultImg from '../../assets/casa1.jpg';
 
-import { CardInfoIcons } from './styles';
+import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
+import { useUser } from '../core/UserProvider/useUser';
+import { CardInfoIcons, useStyles } from './styles';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: 345,
-    backgroundColor: '#ece9e9',
-  },
-  media: {
-    height: '40%',
-    paddingTop: '50%', // 16:9
-  },
-  avatar: {
-    backgroundColor: '#6e6d6d',
-  },
-}));
-
-export default function RecipeReviewCard({ imovel }) {
+export default function RecipeReviewCard({ imovel, updateScreen, update }) {
+  const { user: { id } } = useUser();
   const classes = useStyles();
 
   const title = `${imovel.bairro} / ${imovel.cidade} `;
+
+  const removeImovel = async () => {
+    await apiIntegracaoImvs.user.removeImovel(id, imovel.id)
+      .then(() => updateScreen(!update));
+  };
 
   return (
     <Card className={classes.root}>
@@ -49,10 +43,11 @@ export default function RecipeReviewCard({ imovel }) {
         subheader={new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
         action={(
           <IconButton aria-label="Remover" title="Remover">
-            <NotInterestedIcon />
+            <DeleteIcon
+              onClick={() => removeImovel()}
+            />
           </IconButton>
           )}
-
       />
 
       <CardMedia
