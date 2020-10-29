@@ -1,15 +1,18 @@
 import axios from 'axios';
 import swal from 'sweetalert';
+import { Loading } from 'react-loading-ui';
 import { LOCAL_STORAGE_KEYS } from '../constants';
+import { loadSettings } from '../components/LoadinSpinner';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: 'http://localhost:8080/',
-  headers: { Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_KEYS.userAuthRoken)}` },
+  headers: { Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_KEYS.userAuthToken)}` },
 });
 
-const ApiImoveis = {
+export const apiIntegracaoImvs = {
   getAll: async (page = 0) => {
     try {
+      Loading(loadSettings);
       const { data } = await api.get(`api/imoveis/users?page=${page}`);
       return data;
     } catch (error) {
@@ -32,9 +35,12 @@ const ApiImoveis = {
       return console.log(error.response.status);
     }
   },
+
   getByUserId: async (userId) => {
     try {
+      Loading(loadSettings);
       const { data } = await api.get(`api/imoveis/users/${userId}`);
+      Loading(loadSettings);
       return data;
     } catch (error) {
       return console.log(error);
@@ -42,6 +48,7 @@ const ApiImoveis = {
   },
 
   user: {
+
     login: async (username, password) => {
       try {
         const response = await api.post('/login', {
@@ -57,29 +64,72 @@ const ApiImoveis = {
       }
     },
 
+    signUp: async (newUser) => {
+      try {
+        const response = await api.post('api/sign-up', {
+          ...newUser,
+        });
+        swal('Sucesso!', 'Sua conta foi cadastrada com sucesso!', 'sucess');
+        return response.data;
+      } catch (error) {
+        if (error.response.status === 400) {
+          const errorMesage = error.response.data.campos[0];
+          console.log(errorMesage);
+          const { nome } = errorMesage;
+          const { mensagem } = errorMesage;
+          return swal('Ops!', `Desculpe, todos campos sao obrigatorios \n \n Erro: ${nome} ${mensagem} `, 'error');
+        }
+
+        if (error.response.status === 409) {
+          return swal('Ops!', 'Desculpe usuario ou email ja cadastrado', 'error');
+        }
+        return (error.response);
+      }
+    },
+
     getByUserName: async (username, token) => {
       try {
+        Loading(loadSettings);
         const response = await api.get(`/api/username/${username}`);
-        console.log('login', response);
+        Loading(loadSettings);
         return { ...response.data, token };
       } catch (error) {
         if (error.response.status === 404) { swal('Ops!', 'username invalido', 'error'); }
+
         return console.log(error);
       }
     },
 
-    addImovel: async (userId) => {
+    addImovel: async (userId, imovel) => {
       try {
-        const response = await api.post(`/api/imoveis/users/${userId}`);
+        const response = await api.post(`/api/imoveis/user/${userId}`, { ...imovel });
+        swal('Liked!', 'Imovel salvo na pagina de favoritos!', 'sucess');
+        return response;
+      } catch (error) {
+        if (error.response.status === 409) {
+          swal('Ops!', 'Você ja favoritou este imovel', 'error');
+          console.log(error);
+        }
+        return console.log(error.response);
+      }
+    },
+
+    removeImovel: async (userId, imovelId) => {
+      try {
+        const response = await api.delete(`/api/imoveis/user/${userId}/remove/${imovelId}`, { crossDomain: true });
+        swal('Unlike!', 'Vamos procurar mais imóveis?', 'sucess');
         return response;
       } catch (error) {
         return console.log(error);
       }
     },
 
-    removeImovel: async (imovelId) => {
+    getPageableFavs: async (page = 0, userId) => {
       try {
-        const response = await api.put(`/api/imoveis/user/${imovelId}`);
+        Loading(loadSettings);
+        const response = await api.get(`/api/imoveis/user/${userId}?page=${page}`);
+        console.log('Favoritos', response);
+        Loading(loadSettings);
         return response;
       } catch (error) {
         return console.log(error);
@@ -87,5 +137,3 @@ const ApiImoveis = {
     },
   },
 };
-
-export default ApiImoveis;
