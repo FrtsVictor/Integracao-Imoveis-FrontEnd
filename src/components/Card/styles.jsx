@@ -4,12 +4,12 @@ import DefaultImg from '../../assets/casa1.jpg';
 export const CardContainer = styled.div`
     margin-top: 30px;
     display: inline-flex;
-    width: 43vw;
-    height: 30vh;
+    width: 37vw;
+    height: 38vh;
     background-color:#ebebed;
     min-width: 380px;
     min-height: 150px;
-    max-height: 200px;
+    max-height: 400px;
     border-radius: 10px;
     border: 0.3px solid #cccccc;
     box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.6);
@@ -56,14 +56,15 @@ grid-gap: 2%;
 `;
 
 export const CardP = styled.p`
-font-size: 0.8rem;
+font-size: 1rem;
 margin-left: 15px;
 align-items: center;
 display:flex;
 `;
 
 export const LineDiv = styled.div`
-margin-top: 2%;
+margin-top: 40px;
+margin-left: -25px;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 justify-content:space-between;

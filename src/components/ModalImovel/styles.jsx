@@ -14,17 +14,17 @@ export const PapperContainer = styled.div`
     display: flex;
     width: 80vw;
     height: 90vh;
-    border-radius: 10px;
+    border-radius: 20px;
     flex-wrap: wrap;
     margin:  30px;
     color:#03020c;
-    background-color: #c5cdd8;
-    display: flex;
+    background-color: #fff;
     justify-content: center;
-    align-items: center;
+    align-items: right;
     transition: 500ms;
     margin-left:150px;
     border-right:1px solid black;
+    font-style:Roboto, sans-serif;
 
 `;
 
@@ -51,7 +51,7 @@ margin-left: 5%;
 margin-bottom:50px;
 margin-top:22px;
 grid-template-columns: 1fr;
-box-shadow: 5px 10px 8px #888888;
+box-shadow: 5px 10px 8px #b1bcce;
 font-style:italic;
 font-weight: 400;
 
@@ -80,7 +80,7 @@ width: 70%;
 height: 90%;
 
 && div{
-    background-color:  #c5cdd8;
+    background-color:  #fff;
 }
 
 `;
