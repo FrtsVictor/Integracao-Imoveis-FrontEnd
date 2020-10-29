@@ -10,25 +10,32 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
+import { useUser } from '../core/UserProvider/useUser';
 
 // Modal
 import ModalImovel from '../ModalImovel';
 
 // ApiConnection
-import apiIntegracaoImoveis from '../../services/apiIntegracaoImoveis';
+import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
 
 // _______________Styles
 import {
   CardContainer, HouseImg, CardP, Info, LineDiv, IconDiv, FavIcon, DivImg, Row, IconLeft, IconRight,
 } from './styles';
 
-const Card = ({
-  urlImagem, imovel,
+const Card = ({ imovel }) => {
+  const { user } = useUser();
 
-}) => {
-  const likeButton = (imovelObj) => {
-    apiIntegracaoImoveis.post(imovelObj)
-      .then((resp) => resp);
+  const idRenamer = (imv) => {
+    const { id: idImobile } = imv;
+    const { id, ...imovelNovo } = imv;
+    const newImovel = { ...imovelNovo, idImobile };
+    return newImovel;
+  };
+
+  const likeButton = () => {
+    apiIntegracaoImvs.user.addImovel(user.id, idRenamer(imovel))
+      .then(() => console.log('imovel adicionado'));
   };
 
   //   _________ModalOpen
@@ -47,7 +54,7 @@ const Card = ({
     <CardContainer>
       <DivImg onClick={handleOpen}>
         <HouseImg
-          urlImagem={urlImagem}
+          urlImagem={imovel.urlImagem}
         />
       </DivImg>
       <ModalImovel open={open} handleClose={handleClose} imovel={imovel} />
