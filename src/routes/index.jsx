@@ -13,8 +13,8 @@ const Routes = () => (
     <Route path="/Home" component={Home} />
     <Route path="/Login" component={Login} />
     <Route path="/Cadastro" component={Cadastro} />
-    <Route path="/search" component={Search} isPrivate />
-    <Route path="/Favoritos" component={Favoritos} isPrivate />
+    <Route path="/search" component={Search} />
+    <Route path="/Favoritos" component={Favoritos}  />
   </Switch>
 );
 

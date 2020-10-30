@@ -14,6 +14,8 @@ html, body, #root {
     font-family: 'Roboto', sans-serif;
     height: 100%;
     margin: 0 auto;
+    max-width: 100%;
+
 }
 
 body, input, button {

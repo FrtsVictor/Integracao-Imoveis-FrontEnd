@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
     display: flex;
     font-family: 'Oxygen', sans-serif;
+    height:450px;
+    margin-bottom:70%;
 
 `;
 export const Filter = styled.div`
@@ -11,13 +13,15 @@ export const Filter = styled.div`
     width: 20%;
     border-right: 1px solid #ccc;
     margin: 10px;
-    background-color:#F0F1F2;
+    background-color:#0071C2 ;
     margin-top: -45px;
     align-items: center;
+    margin-top:-20px;
 
     h2{
         margin: 25px 5px;
         font-size:1.9rem;
+
     }
     h3{
         margin: 25px 5px;
@@ -26,9 +30,9 @@ export const Filter = styled.div`
     }
 
        label{
+        margin-left:13px;
         font-size:20px;
-        font-style:italic;
-        margin:5px;
+
 
     }
 `;
@@ -43,11 +47,13 @@ export const InputType = styled.div`
 
 export const Price = styled.div`
     display: flex;
-    gap: 10px;
+    padding:7px;
+    gap: 5px;
 
         input {
         font-size:12px;
-        font-family: 'IBM Plex Mono', monospace;
+        font-family:'Oxygen', sans-serif ;
+        font-weight:bold;
         width: 30%;
         cursor: pointer;
 
@@ -70,6 +76,9 @@ export const PriceActive = styled.div`
         span{
             margin-top: 2px;
             font-size: 12px;
+            margin-left:17px;
+            font-weight:bold;
+
 
         }
 
@@ -85,8 +94,6 @@ export const CardSection = styled.div`
     width: 80%;
     height:50%;
     margin-top:-50px;
-
-
 
     a {
         text-decoration: none;

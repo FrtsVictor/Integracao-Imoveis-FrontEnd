@@ -7,7 +7,7 @@ export const Container = styled.div`
   left: 0;
   width: 100%;
   padding: 20px 10px;
-  background: radial-gradient(circle, #526cff 0%, #0b2fff 100%);
+  background: radial-gradient(circle, #526cff 0%, #253D71 100%);
   @media (max-width: 1000px) {
     padding: 70px 30px;
   }

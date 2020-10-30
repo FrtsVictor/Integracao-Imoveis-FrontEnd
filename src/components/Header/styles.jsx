@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.div`
-    font-size: 30px;
-    display: flex;
-    align-items:center;
-
-`;
-
 export const Container = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
     display: flex;
@@ -16,6 +9,8 @@ export const Container = styled.div`
     border-bottom: 1px solid #efefef;
     font-family: 'Oxygen', sans-serif;
     font-weight: bold;
+    background-color:#FFB003;
+
 `;
 
 export const LinksContainer = styled.div`
@@ -42,9 +37,10 @@ li{
 
 a{
     display:flex;
+    font-size:20px;
     align-items:center;
     text-decoration: none;
-    color: #000;
+    color: #fff;
     &:hover{
     color: #93c6f9;
     transition: 0.2s;

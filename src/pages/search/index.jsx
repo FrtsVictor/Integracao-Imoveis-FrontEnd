@@ -47,14 +47,6 @@ const Search = () => {
     }, []);
 
 
-    // const loadProperty = useCallback(
-    //     async () => {
-    //         const response = await api.get('tipo');
-
-    //         setProperty(response.data);
-    //     }, [],
-    // );
-
     const loadFiltered = useCallback(
         () => {
             const query = history.location.search.replace('?', '').split('&');
@@ -90,16 +82,6 @@ const Search = () => {
         }, [apiList, filters,filtersType, maxValue, minValue, activePriceFilter, history.location.search],
     );
 
-    //   const loadType = async () => {
-    //     const response = await api.get('tipo');
-    //     setType(response.data);
-    //   };
-
-    //   useEffect(() => {
-    //     loadProperty();
-    //     loadType();
-    //   }, []);
-
     useEffect(() => {
         loadFiltered();
     }, [filters, loadFiltered, history.location]);
@@ -127,53 +109,8 @@ const Search = () => {
         <>
             <Header />
             <Container>
-
-
                 <Filter>
-                    <h2>Filtros</h2>
-                    <h3>Tipo</h3>
-                    <br />
-                    <InputType>
-                    <input
-                        type="checkbox"
-                        id=""
-                        name=""
-                        onClick={e => addFilter(e.target)}
-                        value="L"
-                    />
-                    <label htmlFor="">Locação</label>
-                    <br />
-
-                    <input
-                        type="checkbox"
-                        id=""
-                        name=""
-                        value="V"
-                        onClick={e => addFilter(e.target)}
-                    />
-                    <label htmlFor="">Venda</label>
-                    <br />
-
-                    <input
-                        type="checkbox"
-                        id=""
-                        name=""
-                        value="Casa"
-                        onClick={e => addFilterType(e.target)}
-                    />
-                    <label htmlFor="">Casa</label>
-                    <br />
-
-                    <input
-                        type="checkbox"
-                        id=""
-                        name=""
-                        value="Apartamento APT"
-                        onClick={e => addFilterType(e.target)}
-                    />
-                    <label htmlFor="">Apartamento</label>
-                    </InputType>
-
+                    <h2>Pesquisar</h2>
 
                     <h3>Preço</h3>
                     {!activePriceFilter
@@ -202,24 +139,62 @@ const Search = () => {
                                 onClick={() => minValue && maxValue && setActivePriceFilter(true)}
                             />
                         </Price> :
-                        <PriceActive>
+                        <PriceActive> 
                             de {convertPrice(minValue)} até {convertPrice(maxValue)}
                             <div onClick={() => {
                                 setMinValue();
                                 setMaxValue();
                                 setActivePriceFilter(false)
                             }} >
-                                <FiX /><span>Limpar filtro</span>
+                               <span>Limpar</span>
                             </div>
+
 
                         </PriceActive>
 
+
                     }
+                    <br />
+                    <br />
+                     <h3>Filtros</h3>
+
+                    <InputType>
+                    <input
+                        type="checkbox"
+                        onClick={e => addFilter(e.target)}
+                        value="L"
+                    />
+                    <label htmlFor="">Locação</label>
+                    <br />
+
+                    <input
+                        type="checkbox"
+                        value="V"
+                        onClick={e => addFilter(e.target)}
+                    />
+                    <label htmlFor="">Venda</label>
+                    <br />
+
+                    <input
+                        type="checkbox"
+                        value="Casa"
+                        onClick={e => addFilterType(e.target)}
+                    />
+                    <label htmlFor="">Casa</label>
+                    <br />
+
+                    <input
+                        type="checkbox"
+                        value="Apartamento APT"
+                        onClick={e => addFilterType(e.target)}
+                    />
+                    <label htmlFor="">Apartamento</label>
+                    </InputType>
 
                 </Filter>
 
                 <CardSection>
-                    {/* <p><strong>Resultado da pesquisa: </strong></p> */}
+
 
 
                     {filteredproperty.map((imovel) => (
