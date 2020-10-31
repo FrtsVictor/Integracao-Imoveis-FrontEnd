@@ -29,8 +29,8 @@ const Card = ({ imovel }) => {
   const idRenamer = (imv) => {
     const { id: idImobile } = imv;
     const { id, ...imovelNovo } = imv;
-    const newImovel = { ...imovelNovo, idImobile };
-    return newImovel;
+    const idRenamed = { ...imovelNovo, idImobile };
+    return idRenamed;
   };
 
   const likeButton = () => {
@@ -73,7 +73,7 @@ const Card = ({ imovel }) => {
               onClick={() => likeButton(imovel)}
             >
               <FavoriteBorderIcon />
-              < br/>
+              <br />
             </button>
           </IconRight>
         </FavIcon>
@@ -85,13 +85,17 @@ const Card = ({ imovel }) => {
             {imovel.cidade}
             {' / '}
             {imovel.bairro}
-          </CardP> < br/>
+          </CardP>
+          {' '}
+          <br />
 
           <CardP>
             <AttachMoneyIcon />
 
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
-          </CardP> < br/>
+          </CardP>
+          {' '}
+          <br />
           <CardP>
             <HomeWorkIcon />
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valorCondominio)}
