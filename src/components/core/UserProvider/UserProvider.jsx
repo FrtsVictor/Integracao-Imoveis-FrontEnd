@@ -22,10 +22,6 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(initialValue.user);
   const clearUser = () => setUser(initialValue.user);
 
-  //   useEffect(() => {
-  // getFromLocalState + setUser
-  //   }, []);
-
   return (
     <UserContext.Provider value={{ user, setUser, clearUser }}>
       {children}
