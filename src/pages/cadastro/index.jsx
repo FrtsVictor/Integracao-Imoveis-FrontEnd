@@ -2,18 +2,15 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
 import React, { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logoImg from '../../assets/logo_1.png';
 import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
 import { Background, LogoContainer, useStyles } from './styles';
 
 export default function SignUp() {
   const classes = useStyles();
-  //   const history = useHistory();
-
   const [firstName, setFirstName] = useState();
   const [lastName, setLastname] = useState();
   const [username, setUsername] = useState();
@@ -31,10 +28,19 @@ export default function SignUp() {
       password,
     };
 
+    const resetFiled = () => {
+      setFirstName('');
+      setLastname('');
+      setUsername('');
+      setEmail('');
+      setPassword('');
+      setLoading('');
+    };
+
     await apiIntegracaoImvs.user.signUp(newUser)
-      .then((resp) => {
+      .then(() => {
         setLoading(true);
-        console.log('asdasd', resp);
+        resetFiled();
       }).finally(
         () => setLoading(false),
       );
@@ -117,7 +123,7 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item>
-                <Link href="Login" variant="body2" className={classes.link}>
+                <Link to="Login" variant="body2" className={classes.link}>
                   Ja tem cadastro? Voltar para tela de login.
                 </Link>
               </Grid>
