@@ -9,7 +9,7 @@ import { apiImobile } from '../services/apiImobile';
 const AuthContextIntegracao = createContext();
 
 const AuthProviderIntegracao = ({ children }) => {
-  const { user, setUser } = useUser();
+  const { setUser, clearUser } = useUser();
 
   const login = useCallback(
     async (username, password) => {
@@ -28,15 +28,13 @@ const AuthProviderIntegracao = ({ children }) => {
   );
 
   const logout = useCallback(() => {
-    // TODO: refatorar para retornar valor equivalente ao
-    // initialValue de UserProvider ao inves de null
-    setUser(null);
+    clearUser();
+    localStorage.clear();
   }, []);
 
   return (
     <AuthContextIntegracao.Provider
-    // TODO: find a place to user, duplicated with UserProvider
-      value={{ user, login, logout }}
+      value={{ login, logout }}
     >
       {children}
     </AuthContextIntegracao.Provider>
