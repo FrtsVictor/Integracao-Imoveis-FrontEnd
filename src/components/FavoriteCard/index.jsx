@@ -14,8 +14,9 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import HomeIcon from '@material-ui/icons/Home';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import DefaultImg from '../../assets/casa1.jpg';
-
+import ModalImovel from '../ModalImovel';
 import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
 import { useUser } from '../core/UserProvider/useUser';
 import { CardInfoIcons, useStyles } from './styles';
@@ -31,6 +32,18 @@ export default function RecipeReviewCard({ imovel, updateScreen, update }) {
       .then(() => updateScreen(!update));
   };
 
+  //   _________ModalOpen
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -42,11 +55,20 @@ export default function RecipeReviewCard({ imovel, updateScreen, update }) {
         title={title}
         subheader={new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
         action={(
-          <IconButton aria-label="Remover" title="Remover">
-            <DeleteIcon
-              onClick={() => removeImovel()}
-            />
-          </IconButton>
+          <>
+            <IconButton aria-label="Detalhes" title="Detalhes">
+              <ExpandLessIcon
+                onClick={() => { handleOpen(); }}
+              />
+            </IconButton>
+
+            <IconButton aria-label="Remover" title="Remover">
+              <DeleteIcon
+                onClick={() => removeImovel()}
+              />
+            </IconButton>
+            <ModalImovel open={open} handleClose={handleClose} imovel={imovel} />
+          </>
           )}
       />
 
