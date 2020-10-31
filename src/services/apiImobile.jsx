@@ -1,10 +1,12 @@
 import axios from 'axios';
 import swal from 'sweetalert';
-import { Loading } from 'react-loading-ui';
-import { loadSettings } from '../components/LoadinSpinner';
 import { LOCAL_USER_IMOBILE, LOCAL_STORAGE_KEYS } from '../constants';
 
 const api = axios.create({
+  baseURL: 'http://api-mobile-corretagem-homologacao.alterdatasoftware.com.br/api',
+});
+
+const apiAuth = axios.create({
   baseURL: 'http://api-mobile-corretagem-homologacao.alterdatasoftware.com.br/api',
   headers: { Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_KEYS.userImobileToken)}` },
 });
@@ -24,11 +26,11 @@ export const apiImobile = {
 
   getImoveis: async (pageable) => {
     try {
-      Loading(loadSettings);
-      const resp = await api.post('Imovel/obter-lista', { ...pageable });
+    //   Loading(loadSettings);
+      const resp = await apiAuth.post('Imovel/obter-lista', { ...pageable });
       const test = resp.data.content.listaPaginada;
       console.log(test);
-      Loading(loadSettings);
+      //   Loading(loadSettings);
       return resp;
     } catch (error) {
       swal('Ops!', 'Precisamos do seu Login para acessar os imoveis!', 'error');
