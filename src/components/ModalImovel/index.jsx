@@ -16,6 +16,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
+import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
+import { useUser } from '../core/UserProvider/useUser';
 
 import {
   HouseIcons, CarouselContainer, HouseImg, PapperContainer, Container, InfoP,
@@ -23,6 +25,20 @@ import {
 } from './styles';
 
 export default function TransitionsModal({ handleClose, open, imovel }) {
+  const { user: { id } } = useUser();
+
+  const idRenamer = (imv) => {
+    const { id: idImobile } = imv;
+    const { id, ...imovelNovo } = imv;
+    const idRenamed = { ...imovelNovo, idImobile };
+    return idRenamed;
+  };
+
+  const likeButton = () => {
+    apiIntegracaoImvs.user.addImovel(id, idRenamer(imovel))
+      .then(() => console.log('imovel adicionado'));
+  };
+
   return (
     <Container>
       <Modal
@@ -42,7 +58,7 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
 
             <IconButton
               style={{
-                 display: 'flex',
+                display: 'flex',
                 justifyContent: 'flex-end',
                 color: 'rgb(38,97,151)',
                 alignItems: 'right',
@@ -68,7 +84,7 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
                   <IconButton
                     color="default"
                     aria-label="add an alarm"
-                    onClick={() => console.log('err')}
+                    onClick={() => likeButton()}
                   >
                     <FavoriteBorderSharpIcon />
                   </IconButton>
