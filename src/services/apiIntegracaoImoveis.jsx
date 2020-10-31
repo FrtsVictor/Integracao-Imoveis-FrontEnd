@@ -9,10 +9,14 @@ export const api = axios.create({
   headers: { Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE_KEYS.userAuthToken)}` },
 });
 
+export const apiLogin = axios.create({
+  baseURL: 'http://localhost:8080/',
+});
+
 export const apiIntegracaoImvs = {
   getAll: async (page = 0) => {
     try {
-      Loading(loadSettings);
+    //   Loading(loadSettings);
       const { data } = await api.get(`api/imoveis/users?page=${page}`);
       return data;
     } catch (error) {
@@ -38,12 +42,20 @@ export const apiIntegracaoImvs = {
 
   getByUserId: async (userId) => {
     try {
-      Loading(loadSettings);
+    //   Loading(loadSettings);
       const { data } = await api.get(`api/imoveis/users/${userId}`);
-      Loading(loadSettings);
+      //   Loading(loadSettings);
       return data;
     } catch (error) {
       return console.log(error);
+    }
+  },
+  getBairro: async (userId) => {
+    try {
+      const { data } = await api.get(`api/imoveis/bairros/${userId}`);
+      return data;
+    } catch (error) {
+      return console.log('Bairro Error', error);
     }
   },
 
@@ -66,7 +78,8 @@ export const apiIntegracaoImvs = {
 
     signUp: async (newUser) => {
       try {
-        const response = await api.post('api/sign-up', {
+        console.log(newUser);
+        const response = await apiLogin.post('api/sign-up', {
           ...newUser,
         });
         swal('Sucesso!', 'Sua conta foi cadastrada com sucesso!', 'sucess');
@@ -116,7 +129,7 @@ export const apiIntegracaoImvs = {
 
     removeImovel: async (userId, imovelId) => {
       try {
-        const response = await api.delete(`/api/imoveis/user/${userId}/remove/${imovelId}`, { crossDomain: true });
+        const response = await api.post(`/api/imoveis/user/${userId}/remove/${imovelId}`, { crossDomain: true });
         swal('Unlike!', 'Vamos procurar mais imóveis?', 'sucess');
         return response;
       } catch (error) {
