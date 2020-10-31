@@ -12,16 +12,6 @@ import { Container, CardDiv } from './styles';
 import { apiImobile } from '../../services/apiImobile';
 
 const Home = () => {
-  const PageCount = (qtdItems) => {
-    let Qtdpages = Math.trunc(qtdItems / 4);
-    const n = qtdItems % 4;
-    if (n) {
-      Qtdpages += 1;
-      return Qtdpages;
-    }
-    return Qtdpages;
-  };
-
   const [pageable, setPageable] = useState({
     paginacao: {
       itensPorPagina: 4,
@@ -38,15 +28,13 @@ const Home = () => {
   const getPaginationRequest = useCallback(() => {
     apiImobile.getImoveis(pageable)
       .then(({ data: { content } }) => {
-        const totalPages = PageCount(content.totalItens);
         const pagination = {
           paginacao: {
             itensPorPagina: 4,
             paginaAtual: atualPage,
-            totalPaginas: totalPages || 0,
+            totalPaginas: Math.ceil(content.totalItens / 4) || 0,
           },
         };
-        console.log(pagination);
         setPageable(pagination);
         setItemList(content.listaPaginada);
       });
@@ -75,7 +63,7 @@ const Home = () => {
             ))}
           </CardDiv>
         ) : ''}
-        
+
       </Container>
       <Footer />
     </>
