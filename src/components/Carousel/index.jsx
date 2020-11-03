@@ -10,7 +10,7 @@ import casa3 from '../../assets/casa3.jpg';
 import casa4 from '../../assets/casa4.jpg';
 import casa5 from '../../assets/casa5.jpg';
 
-const Slider = () => (
+export const Slider = () => (
 
   <Container>
     <AwesomeSlider>
@@ -34,5 +34,3 @@ const Slider = () => (
   </Container>
 
 );
-
-export default Slider;
