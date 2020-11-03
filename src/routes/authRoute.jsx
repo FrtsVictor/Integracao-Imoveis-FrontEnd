@@ -7,8 +7,10 @@ const Route = ({ isPrivate = false, component: Component, ...rest }) => {
 
   return (
     <ReactDOMRoute
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
       render={({ location }) => {
+        // TODO verificar se o token é válido
         if (isPrivate && !id) {
           return (
             <Redirect to={{

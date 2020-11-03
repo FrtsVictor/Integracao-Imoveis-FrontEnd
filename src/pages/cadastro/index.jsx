@@ -9,7 +9,7 @@ import logoImg from '../../assets/logo_1.png';
 import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
 import { Background, LogoContainer, useStyles } from './styles';
 
-export default function SignUp() {
+export const Cadastro = () => {
   const classes = useStyles();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastname] = useState();
@@ -143,4 +143,4 @@ export default function SignUp() {
       </Container>
     </Background>
   );
-}
+};

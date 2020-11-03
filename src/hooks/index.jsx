@@ -1,8 +1,8 @@
 import React from 'react';
 import { UserProvider } from '../components/core/UserProvider/UserProvider';
-import { AuthProviderIntegracao } from './integracaoAuth';
+import { AuthProviderIntegracao } from './AuthProviderIntegracao';
 
-const AppProvider = ({ children }) => (
+export const AppProvider = ({ children }) => (
   <UserProvider>
     <AuthProviderIntegracao>
       {children}
@@ -10,5 +10,3 @@ const AppProvider = ({ children }) => (
   </UserProvider>
 
 );
-
-export default AppProvider;

@@ -6,25 +6,27 @@ import Fade from '@material-ui/core/Fade';
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 
-// Icons
+// Icons & Buttons
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import BathtubIcon from '@material-ui/icons/Bathtub';
 import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import HomeIcon from '@material-ui/icons/Home';
-
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
+
+// Api && Hooks
 import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
 import { useUser } from '../core/UserProvider/useUser';
 
+// Styles
 import {
   HouseIcons, CarouselContainer, HouseImg, PapperContainer, Container, InfoP,
   HouseDetails, RightMenuContainer, ContainerUp, ContainerDown, MenuText, FavIcon,
 } from './styles';
 
-export default function TransitionsModal({ handleClose, open, imovel }) {
+export const ModalImovel = ({ handleClose, open, imovel }) => {
   const { user: { id } } = useUser();
 
   const idRenamer = (imv) => {
@@ -170,4 +172,4 @@ export default function TransitionsModal({ handleClose, open, imovel }) {
       </Modal>
     </Container>
   );
-}
+};

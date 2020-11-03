@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PaginationControlled({ pageable, getPages }) {
+export const Paginations = ({ pageable, getPages }) => {
   const classes = useStyles();
   const [page, setPage] = useState(0);
 
@@ -26,4 +26,4 @@ export default function PaginationControlled({ pageable, getPages }) {
       />
     </div>
   );
-}
+};

@@ -2,7 +2,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import { Loading } from 'react-loading-ui';
 import { LOCAL_STORAGE_KEYS } from '../constants';
-import { loadSettings } from '../components/LoadinSpinner';
+import { loadSettings } from '../components/LoadingSpinner';
 
 export const api = axios.create({
   baseURL: 'http://localhost:8080/',
@@ -102,9 +102,9 @@ export const apiIntegracaoImvs = {
 
     getByUserName: async (username, token) => {
       try {
-        Loading(loadSettings);
+        // Loading(loadSettings);
         const response = await api.get(`/api/username/${username}`);
-        Loading(loadSettings);
+        // Loading(loadSettings);
         return { ...response.data, token };
       } catch (error) {
         if (error.response.status === 404) { swal('Ops!', 'username invalido', 'error'); }

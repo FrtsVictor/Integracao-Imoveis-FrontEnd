@@ -5,14 +5,13 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { useHistory, Link } from 'react-router-dom';
-import { useAuth } from '../../hooks/integracaoAuth';
+import { useAuth } from '../../hooks/AuthProviderIntegracao';
 import { Background, useStyles, LogoContainer } from './styles';
 import logoImg from '../../assets/logo_1.png';
 
-export default function SignIn() {
+export const Login = () => {
   const classes = useStyles();
 
   const [username, setUsername] = useState('');
@@ -98,4 +97,4 @@ export default function SignIn() {
       </Container>
     </Background>
   );
-}
+};
