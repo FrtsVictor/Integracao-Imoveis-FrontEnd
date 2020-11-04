@@ -20,7 +20,7 @@ import { ModalImovel } from '../ModalImovel';
 
 // Styles
 import {
-  CardContainer, HouseImg, CardP, Info, LineDiv, IconDiv, FavIcon, DivImg, Row, IconLeft, IconRight,
+  CardContainer, HouseImg, Info, LineDiv, FavIcon, DivImg, Row,
 } from './styles';
 
 export const Card = ({ imovel }) => {
@@ -61,60 +61,54 @@ export const Card = ({ imovel }) => {
 
       <Info>
         <FavIcon>
-          <IconLeft>
+          <div>
             {imovel.tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
             {imovel.tipo === 'Casa' ? 'Casa' : 'APT'}
-          </IconLeft>
-          <IconRight>
+          </div>
+          <div>
             <button
               type="button"
               onClick={() => likeButton(imovel)}
             >
               <FavoriteBorderIcon />
             </button>
-          </IconRight>
+          </div>
         </FavIcon>
         <Row>
-          <CardP>
+          <div>
             <RoomIcon />
             {imovel.cidade}
             {' / '}
             {imovel.bairro}
-          </CardP>
+          </div>
 
-          <CardP>
+          <div>
             <AttachMoneyIcon />
-
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
-          </CardP>
-          <CardP>
+          </div>
+
+          <div>
             <HomeWorkIcon />
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valorCondominio)}
-          </CardP>
+          </div>
 
         </Row>
 
         <LineDiv>
-          <IconDiv>
-            <CardP>
-              <BathtubIcon />
-              {imovel.banheiros}
-            </CardP>
-          </IconDiv>
+          <div>
+            <BathtubIcon />
+            {imovel.banheiros}
+          </div>
 
-          <IconDiv>
-            <CardP>
-              <HotelIcon />
-              {imovel.dormitorios}
-            </CardP>
-          </IconDiv>
+          <div>
+            <HotelIcon />
+            {imovel.dormitorios}
+          </div>
 
-          <IconDiv>
-            <CardP>
-              <ShuffleSharpIcon />
-              {(imovel.transacao === 'V' ? 'Venda' : 'Locação')}
-            </CardP>
-          </IconDiv>
+          <div>
+            <ShuffleSharpIcon />
+            {(imovel.transacao === 'V' ? 'Venda' : 'Locação')}
+          </div>
         </LineDiv>
 
       </Info>
