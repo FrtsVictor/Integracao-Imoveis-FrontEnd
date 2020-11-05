@@ -29,10 +29,11 @@ export const useStyles = makeStyles((theme) => ({
 }));
 
 export const Background = styled.div`
-display: flex;
-height:100%;
-width:100%;
+margin:0;
+height:100vh;
+width:100vw;
 background-image: url(${BackGroundImg});
+background-size: cover;
 `;
 
 export const logoImage = styled.div`
@@ -49,5 +50,31 @@ mar
 img{
         min-width: 250px;
         width: 5vw;
+    }
+`;
+
+export const BackHome = styled.div`
+padding: 15px 5px;
+display: flex;
+justify-content: flex-start;
+/* cursor:pointer; */
+
+    svg{
+        fill:#253D71;
+        font-size: 40px;
+    }
+
+    a{
+        display: flex;
+        align-self:center;
+        font-size:20px;
+        align-items:center;
+        text-decoration: none;
+        color: #253D71;
+
+        &:hover{
+        color: #93c6f9;
+        transition: 0.4s;
+        }
     }
 `;

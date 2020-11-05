@@ -1,4 +1,5 @@
 import Box from '@material-ui/core/Box';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +8,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoImg from '../../assets/logo_1.png';
 import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
-import { Background, LogoContainer, useStyles } from './styles';
+import {
+  Background, LogoContainer, useStyles, BackHome,
+} from './styles';
 
 export const Cadastro = () => {
   const classes = useStyles();
@@ -48,6 +51,13 @@ export const Cadastro = () => {
 
   return (
     <Background>
+      <BackHome>
+        <Link to="/Home">
+          <ArrowBackIcon />
+          Home
+        </Link>
+      </BackHome>
+
       <Container component="main" maxWidth="xs">
         <div className={classes.paper}>
           <LogoContainer>
