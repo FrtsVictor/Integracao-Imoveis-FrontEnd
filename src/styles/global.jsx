@@ -8,18 +8,17 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box
+    min-height: 100%;
 }
 
-html, body, #root {
+html, body{
     font-family: 'Roboto', sans-serif;
     height: 100%;
     margin: 0 auto;
-    max-width: 100%;
-
 }
 
 body, input, button {
-    font: 16px sans-serif;
+    font: 16px;
 }
 
 button{
