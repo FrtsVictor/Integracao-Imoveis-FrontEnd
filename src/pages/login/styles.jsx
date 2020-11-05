@@ -24,10 +24,9 @@ export const useStyles = makeStyles((theme) => ({
 
 export const Background = styled.div`
 display: flex;
-height:100%;
-width:100%;
-max-width:100%;
-max-height:100%;
+flex:1;
+min-height:100vh;
+min-width:100vw;
 background-image: url(${BackGroundImg});
 `;
 
