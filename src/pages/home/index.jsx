@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
-// Pagination
+// Pagination Material
 import Pagination from '@material-ui/lab/Pagination';
 // My components
-import { makeStyles } from '@material-ui/core/styles';
 import { Slider } from '../../components/Carousel';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/NewHeader';
@@ -10,35 +9,27 @@ import { CardImg } from '../../components/NewCardImg2';
 
 // Styles
 import {
-  Container, CardDiv, DivPagination, CarouselDiv,
+  Container, CardDiv, DivPagination, CarouselDiv, useStyles,
 } from './styles';
 // Api conection
 import { apiImobile } from '../../services/apiImobile';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
 
 export const Home = () => {
   const classes = useStyles();
   const [itemList, setItemList] = useState([]);
   const [totalPages, setTotalPages] = useState();
-
+  const itensPorPagina = 6;
   const [pageable, setPageable] = useState({
     paginacao: {
-      itensPorPagina: 6,
       paginaAtual: 1,
+      itensPorPagina,
     },
   });
 
   const getPaginationRequest = useCallback(() => {
     apiImobile.getImoveis(pageable)
       .then(({ data: { content } }) => {
-        setTotalPages(Math.ceil(content.totalItens / 6));
+        setTotalPages(Math.ceil(content.totalItens / itensPorPagina));
         setItemList(content.listaPaginada);
       });
   }, [pageable]);
