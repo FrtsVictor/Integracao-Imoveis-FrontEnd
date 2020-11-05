@@ -25,9 +25,10 @@ export const useStyles = makeStyles((theme) => ({
 export const Background = styled.div`
 display: flex;
 flex:1;
-min-height:100vh;
-min-width:100vw;
+height:100vh;
+width:100vw;
 background-image: url(${BackGroundImg});
+background-size: cover;
 `;
 
 export const LogoContainer = styled.div`
