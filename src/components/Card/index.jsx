@@ -10,6 +10,7 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 // Hooks & Api
 import { useUser } from '../core/UserProvider/useUser';
@@ -25,6 +26,10 @@ import {
 
 export const Card = ({ imovel }) => {
   const { user } = useUser();
+
+  let liked = false;
+  const test = '39f814d0-9f74-04ba-bdce-6126ec6adefb';
+  if (imovel.id === test) liked = true;
 
   const idRenamer = (imv) => {
     const { id: idImobile } = imv;
@@ -59,7 +64,7 @@ export const Card = ({ imovel }) => {
       </DivImg>
       <ModalImovel open={open} handleClose={handleClose} imovel={imovel} />
 
-      <Info>
+      <Info liked={liked}>
         <FavIcon>
           <div>
             {imovel.tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
@@ -70,7 +75,7 @@ export const Card = ({ imovel }) => {
               type="button"
               onClick={() => likeButton(imovel)}
             >
-              <FavoriteBorderIcon />
+              {liked ? <FavoriteIcon style={{ fill: '#f57474' }} /> : <FavoriteBorderIcon />}
             </button>
           </div>
         </FavIcon>
