@@ -1,72 +1,93 @@
 import React, { useEffect, useState, useCallback } from 'react';
+// Pagination
+import Pagination from '@material-ui/lab/Pagination';
+// My components
+import { makeStyles } from '@material-ui/core/styles';
+import { Slider } from '../../components/Carousel';
+import { Footer } from '../../components/Footer';
+import { Header } from '../../components/NewHeader';
+import { CardImg } from '../../components/NewCardImg2';
 
-import Header from '../../components/Header';
-import Card from '../../components/Card';
-import Carousel from '../../components/Carousel';
-import Footer from '../../components/Footer';
-
-//import ButtonPOST from '../../components/BtnTestesApi/BtnPOST';
-import Pagination from '../../components/PaginationHome';
-
-import { Container, CardDiv } from './styles';
+// Styles
+import {
+  Container, CardDiv, DivPagination, CarouselDiv,
+} from './styles';
+// Api conection
 import { apiImobile } from '../../services/apiImobile';
 
-const Home = () => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
+export const Home = () => {
+  const classes = useStyles();
+  const [itemList, setItemList] = useState([]);
+  const [totalPages, setTotalPages] = useState();
+
   const [pageable, setPageable] = useState({
     paginacao: {
-      itensPorPagina: 4,
-      paginaAtual: 0,
-      totalPaginas: 0,
+      itensPorPagina: 6,
+      paginaAtual: 1,
     },
   });
-
-  const [itemList, setItemList] = useState([]);
-  const [atualPage, setAtualPage] = useState(1);
-
-  const getPages = (pages) => setAtualPage(pages);
 
   const getPaginationRequest = useCallback(() => {
     apiImobile.getImoveis(pageable)
       .then(({ data: { content } }) => {
-        const pagination = {
-          paginacao: {
-            itensPorPagina: 4,
-            paginaAtual: atualPage,
-            totalPaginas: Math.ceil(content.totalItens / 4) || 0,
-          },
-        };
-        setPageable(pagination);
+        setTotalPages(Math.ceil(content.totalItens / 6));
         setItemList(content.listaPaginada);
       });
-  }, [pageable, atualPage]);
+  }, [pageable]);
 
   useEffect(() => {
     getPaginationRequest();
-  }, [atualPage]);
+  }, [pageable]);
 
   return (
     <>
-      {/* <ButtonPOST /> */}
       <Header title="Home" />
-      <Container>
-        <Carousel />
-        <Pagination pageable={pageable} getPages={getPages} />
+      <CarouselDiv>
+        <Slider />
+      </CarouselDiv>
 
-        {itemList ? (
+      <Container>
+
+        <DivPagination>
+          <div className={classes.root}>
+            <Pagination
+              count={totalPages}
+              defaultPage={1}
+              siblingCount={3}
+              onChange={(e, value) => {
+                const pagination = {
+                  paginacao: {
+                    itensPorPagina: 6,
+                    paginaAtual: value,
+                  },
+                };
+                setPageable(pagination);
+              }}
+            />
+          </div>
+        </DivPagination>
+
+        {itemList
+          && (
           <CardDiv>
             { itemList.map((imovel) => (
-              <div key={imovel.id}>
-                <Card
-                  imovel={{ ...imovel }}
-                />
-              </div>
+              <CardImg
+                key={imovel.id}
+                imovel={imovel}
+              />
             ))}
           </CardDiv>
-        ) : ''}
-
+          )}
       </Container>
       <Footer />
     </>
   );
 };
-export default Home;
