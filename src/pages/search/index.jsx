@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
+import Icon from '@material-ui/core/Icon';
 import { Card } from '../../components/Card';
 import api from '../../services/api';
 import { Footer } from '../../components/Footer';
@@ -11,6 +12,10 @@ import { Header } from '../../components/NewHeader';
 
 import { PaginationHome } from '../../components/PaginationHome';
 import { apiImobile } from '../../services/apiImobile';
+
+// _______________________________
+import { Logo } from '../../components/NewHeader/Logo';
+import LogoImg from '../../assets/logo_1.png';
 
 // ________________________________________________________________________________
 export const Search = () => {
