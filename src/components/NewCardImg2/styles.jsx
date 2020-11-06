@@ -13,9 +13,11 @@ export const Container = styled.div`
   width: 100%;
   max-width: 360px;
   min-width: 260px;
- transition: transform 0.2s;
-  :hover{
+  box-shadow:  24px 20px 51px -21px #191D4D;
+
+   :hover{
     transform: scale(1.02);
+    transition: 0.4s;
   }
   > *{
     background: rgb(0,0,0, 0.5);
@@ -28,6 +30,15 @@ export const CardDescription = styled.div`
   width: 95%;
   color: white;
   padding: 10px;
+
+svg{
+    fill: ${(props) => (props.liked ? '#f35555' : 'white')};
+}
+button:hover{
+    transition: 0.4s;
+  }
+
+
 `;
 
 export const CardIcons = styled.div`
@@ -44,6 +55,7 @@ export const CardIcons = styled.div`
     flex-direction: column;
     align-items: center;
   }
+
 `;
 
 export const ModalDiv = styled.div`
