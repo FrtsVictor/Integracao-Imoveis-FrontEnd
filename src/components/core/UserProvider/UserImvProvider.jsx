@@ -14,20 +14,25 @@ export const UserImvProvider = ({ children }) => {
   useEffect(() => {
     const apiList = async () => apiIntegracaoImvs.user.getCidadeBairroId(148)
       .then((response) => {
-        const allCidades = response.map((obj) => obj[0]);
-        const cidades = [...new Set(allCidades)];
+        if (response) {
+          const allCidades = response.map((obj) => obj[0]);
+          const cidades = [...new Set(allCidades)];
 
-        const allBairros = response.map((obj) => obj[1]);
-        const bairros = [...new Set(allBairros)];
+          const allBairros = response.map((obj) => obj[1]);
+          const bairros = [...new Set(allBairros)];
 
-        const allIds = response.map((obj) => obj[2]);
-        const ids = [...new Set(allIds)];
+          const allIds = response.map((obj) => obj[2]);
+          const ids = [...new Set(allIds)];
 
-        setIdCidadeBairro({
-          ids,
-          bairros,
-          cidades,
-        });
+          const userInfo = {
+            ids,
+            bairros,
+            cidades,
+          };
+          setIdCidadeBairro(userInfo);
+
+          console.log('userInfo', userInfo);
+        }
       });
     apiList();
   }, []);
