@@ -57,11 +57,10 @@ export const BackHome = styled.div`
 padding: 15px 5px;
 display: flex;
 justify-content: flex-start;
-/* cursor:pointer; */
 
     svg{
         fill:#253D71;
-        font-size: 40px;
+        font-size: 30px;
     }
 
     a{
