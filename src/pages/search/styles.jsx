@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
 export const Container = styled.div`
+    margin-top:20px;
     display: flex;
     font-family: 'Oxygen', sans-serif;
     min-height:100%;
@@ -8,11 +10,6 @@ export const Container = styled.div`
     height:100%;
     width:100%;
 `;
-
-export const DivPagination = styled.div`
-    display: flex;
-    align-items: center;
- `;
 
 export const Filter = styled.div`
     display: flex;
@@ -102,14 +99,23 @@ export const CardSection = styled.div`
     display: flex;
     align-items:center;
     flex-wrap: wrap;
-    /* justify-content:space-evenly; */
     gap: 10px;
     max-width: 70%;
     height: 100%;
 `;
 
-export const Paginations = styled.div`
-display: flex;
-align-items:center;
-justify-content:center;
-margin:0;`;
+export const DivPagination = styled.div`
+    margin-top: 25px;
+    margin-bottom:20px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+ `;
+
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
