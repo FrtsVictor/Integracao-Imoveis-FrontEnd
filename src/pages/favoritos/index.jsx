@@ -1,16 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect, useCallback } from 'react';
-
 // My Components
 import { Paginations } from '../../components/Pagination';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/NewHeader';
 import { FavoriteCard } from '../../components/FavoriteCard';
-
 // Api & Hook
 import { useUser } from '../../components/core/UserProvider/useUser';
 import { apiIntegracaoImvs } from '../../services/apiIntegracaoImoveis';
-
 // Styles
 import {
   Container, CardContainer, Filter, LineInput, CardDiv, PageDiv, InputType, SearchTitle, FilterGrid,
@@ -58,13 +55,7 @@ export const Favoritos = () => {
   return (
     <>
       <Header title="Favoritos" />
-
-      <PageDiv>
-        <Paginations getPages={getPages} pageable={pageable} />
-      </PageDiv>
-
       <Container>
-
         <Filter>
           <FilterGrid>
             <InputType>
@@ -121,7 +112,6 @@ export const Favoritos = () => {
                 />
                 <label htmlFor="">Destaque</label>
               </LineInput>
-
               {/* <LineInput>
                 <input
                   type="checkbox"
@@ -131,7 +121,6 @@ export const Favoritos = () => {
                 />
                 <label htmlFor="">Apartamento</label>
               </LineInput> */}
-
             </InputType>
 
           </FilterGrid>
@@ -144,8 +133,10 @@ export const Favoritos = () => {
             </CardDiv>
           ))}
         </CardContainer>
-
       </Container>
+      <PageDiv>
+        <Paginations getPages={getPages} pageable={pageable} />
+      </PageDiv>
       <Footer />
     </>
   );
