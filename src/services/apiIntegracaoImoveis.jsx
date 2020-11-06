@@ -1,3 +1,4 @@
+import React, { useCallback } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { Loading } from 'react-loading-ui';
@@ -16,7 +17,6 @@ export const apiLogin = axios.create({
 export const apiIntegracaoImvs = {
   getAll: async (page = 0) => {
     try {
-    //   Loading(loadSettings);
       const { data } = await api.get(`api/imoveis/users?page=${page}`);
       return data;
     } catch (error) {
@@ -42,9 +42,7 @@ export const apiIntegracaoImvs = {
 
   getByUserId: async (userId) => {
     try {
-    //   Loading(loadSettings);
       const { data } = await api.get(`api/imoveis/users/${userId}`);
-      //   Loading(loadSettings);
       return data;
     } catch (error) {
       return console.log(error);
@@ -67,7 +65,7 @@ export const apiIntegracaoImvs = {
           username, password,
         });
         console.log('login', response);
-        swal('LoggedIn!', 'Bem vindo ao nosso sistema!', 'sucess');
+        // swal('LoggedIn!', 'Bem vindo ao nosso sistema!', 'sucess');
         return response;
       } catch (error) {
         if (error.response.status === 401) { swal('Ops!', 'username ou senha invalidos', 'error'); }
@@ -116,7 +114,7 @@ export const apiIntegracaoImvs = {
     addImovel: async (userId, imovel) => {
       try {
         const response = await api.post(`/api/imoveis/user/${userId}`, { ...imovel });
-        swal('Liked!', 'Imovel salvo na pagina de favoritos!', 'sucess');
+        // swal('Liked!', 'Imovel salvo na pagina de favoritos!', 'sucess');
         return response;
       } catch (error) {
         if (error.response.status === 409) {
@@ -130,7 +128,7 @@ export const apiIntegracaoImvs = {
     removeImovel: async (userId, imovelId) => {
       try {
         const response = await api.post(`/api/imoveis/user/${userId}/remove/${imovelId}`, { crossDomain: true });
-        swal('Unlike!', 'Vamos procurar mais imóveis?', 'sucess');
+        // swal('Unlike!', 'Vamos procurar mais imóveis?', 'sucess');
         return response;
       } catch (error) {
         return console.log(error);
@@ -144,6 +142,16 @@ export const apiIntegracaoImvs = {
         console.log('Favoritos', response);
         Loading(loadSettings);
         return response;
+      } catch (error) {
+        return console.log(error);
+      }
+    },
+
+    getCidadeBairroId: async (userId) => {
+      try {
+        const { data } = await api.get(`/api/imoveis/bairros/${userId}`);
+        console.log(data);
+        return data;
       } catch (error) {
         return console.log(error);
       }
