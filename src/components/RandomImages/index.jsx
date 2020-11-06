@@ -21,6 +21,6 @@ const houseImages = [
 ];
 
 export const RandomImg = () => {
-  const rand = Math.floor(Math.random() * 10);
+  const rand = Math.floor(Math.random() * 9);
   return houseImages[rand];
 };
