@@ -1,26 +1,18 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  font-family: 'Oxygen', sans-serif;
-  margin-top:100px;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 10px;
-  background: radial-gradient(circle, #526cff 0%, #253D71 100%);
-  @media (max-width: 1000px) {
-    padding: 70px 30px;
-  }
-`;
-
-export const Wrapper = styled.div`
-    align-items:center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
-
+    align-items:center;
+    justify-content: flex-end;
+    font-family: 'Oxygen', sans-serif;
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* left: 0; */
+    width: 100%;
+    height: 140px;
+    max-height: 215px;
+    background: radial-gradient(circle, #526cff 0%, #253D71 100%);
 
     h5{
         text-align:center;
@@ -30,23 +22,20 @@ export const Wrapper = styled.div`
 
 `;
 
-export const ColumnIcon = styled.div`
-  padding:20px;
+export const IconsDiv = styled.div`
+  padding: 5px 0;
   list-style-type: none;
   align-items:center;
   display: flex;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  grid-gap: 10px;
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
+  flex-wrap: wrap;
+  gap: 5px;
 `;
 
 export const Link = styled.a`
   color: #fff;
-  margin-bottom: 20px;
   font-size: 18px;
   text-decoration: none;
+
   &:hover {
       color: #072072;
       transition: 100ms ease-in;
@@ -59,5 +48,4 @@ export const TeamDiv = styled.p`
   font-size: 15px;
   color: #fff;
   margin-top:10px;
-
 `;

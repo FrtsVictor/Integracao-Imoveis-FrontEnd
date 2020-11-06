@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const PaginationHome = ({ pageable, getPages }) => {
+export const PaginationHome = ({ pageable, setAtualPage }) => {
   const classes = useStyles();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState('');
 
   return (
     <div className={classes.root}>
@@ -20,8 +20,9 @@ export const PaginationHome = ({ pageable, getPages }) => {
         count={pageable.paginacao.totalPaginas || 0}
         page={page}
         onChange={(event, value) => {
+          console.log(value);
           setPage(value);
-          getPages(value + 1);
+          setAtualPage(value);
         }}
       />
     </div>

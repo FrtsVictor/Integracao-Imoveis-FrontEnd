@@ -2,17 +2,15 @@ import styled from 'styled-components';
 import DefaultImg from '../../assets/casa1.jpg';
 
 export const CardContainer = styled.div`
-    margin-top: 30px;
-    display: inline-flex;
-    width: 37vw;
-    height: 38vh;
-    background-color:#ebebed;
+    display: flex;
+    background-color:#f7f7ff;
     min-width: 380px;
-    min-height: 150px;
-    max-height: 400px;
+    min-height: 200px;
+    max-height: 180px;
+    max-width: 630px;
     border-radius: 10px;
     border: 0.3px solid #cccccc;
-    box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.3);
 
     &:hover{
         transform: scale(1.01);
@@ -21,13 +19,18 @@ export const CardContainer = styled.div`
 
 export const DivImg = styled.div`
     display: flex;
-    flex:1;
+    max-height:100%;
+    max-width: 500px;
+    width: 60%;
 `;
 
 export const Info = styled.div`
-display:flex;
-flex-direction: column;
-flex:1;
+    max-height: 200px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 2%;
 `;
 
 export const HouseImg = styled.img.attrs((props) => ({
@@ -39,10 +42,6 @@ export const HouseImg = styled.img.attrs((props) => ({
     opacity: 1;
     border-radius: 10px 0 0px 10px;
 
-    @media( max-height: 500px){
-        height:90%
-    }
-
     &&:hover{
         cursor: pointer;
         opacity: 0.6;
@@ -50,62 +49,45 @@ export const HouseImg = styled.img.attrs((props) => ({
   `;
 
 export const Row = styled.div`
-display:grid;
-grid-gap: 2%;
-
-`;
-
-export const CardP = styled.p`
-font-size: 1rem;
-margin-left: 15px;
-align-items: center;
 display:flex;
+flex-direction:column;
+
+    div{
+        display:flex;
+        flex-wrap:wrap;
+        margin-top:2px;
+        align-items:center;
+    }
+
 `;
 
 export const LineDiv = styled.div`
-margin-top: 40px;
-margin-left: -25px;
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-justify-content:space-between;
-
-`;
-
-export const IconDiv = styled.div`
-display:flex;
-flex-direction:column;
+margin: 3% 0;
+display: flex;
+justify-content: space-between;
 align-items: center;
-width: 100%;
-margin-bottom: 3vh;
+
+    div{
+        display:flex;
+        align-items: center;
+        width: 100%;
+        margin:0;
+    }
+
 `;
 
 export const FavIcon = styled.div`
-margin:5% 0;
-display: grid;
-grid-template-columns: 1fr 1fr;
-margin-left: 15px;
-`;
-
-export const IconLeft = styled.div`
-display:flex;
+display: flex;
 align-items:center;
-`;
+justify-content: space-between;
 
-export const IconRight = styled.div`
-display:flex;
-align-items:center;
-justify-content: flex-end;
-margin-right: 15px;
-
-&& button{
+ button{
     display:flex;
     border-radius: 50px;
-    align-items:center;
     border:none;
 
     &:hover{
-        transform: scale(1.5);
+        transform: scale(1.3);
     }
 }
-
 `;

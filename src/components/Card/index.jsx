@@ -1,6 +1,7 @@
 import React from 'react';
 
 // Icons
+import StarIcon from '@material-ui/icons/Star';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import HomeIcon from '@material-ui/icons/Home';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -10,6 +11,7 @@ import HotelIcon from '@material-ui/icons/Hotel';
 import ShuffleSharpIcon from '@material-ui/icons/ShuffleSharp';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 // Hooks & Api
 import { useUser } from '../core/UserProvider/useUser';
@@ -20,11 +22,15 @@ import { ModalImovel } from '../ModalImovel';
 
 // Styles
 import {
-  CardContainer, HouseImg, CardP, Info, LineDiv, IconDiv, FavIcon, DivImg, Row, IconLeft, IconRight,
+  CardContainer, HouseImg, Info, LineDiv, FavIcon, DivImg, Row,
 } from './styles';
 
 export const Card = ({ imovel }) => {
   const { user } = useUser();
+
+  let liked = false;
+  const test = '39f814d0-9f74-04ba-bdce-6126ec6adefb';
+  if (imovel.id === test) liked = true;
 
   const idRenamer = (imv) => {
     const { id: idImobile } = imv;
@@ -59,62 +65,74 @@ export const Card = ({ imovel }) => {
       </DivImg>
       <ModalImovel open={open} handleClose={handleClose} imovel={imovel} />
 
-      <Info>
+      <Info liked={liked}>
         <FavIcon>
-          <IconLeft>
+          <div>
             {imovel.tipo === 'Casa' ? <HomeIcon /> : <ApartmentIcon />}
             {imovel.tipo === 'Casa' ? 'Casa' : 'APT'}
-          </IconLeft>
-          <IconRight>
+          </div>
+          <div>
             <button
               type="button"
               onClick={() => likeButton(imovel)}
             >
-              <FavoriteBorderIcon />
+              {liked ? <FavoriteIcon style={{ fill: '#f57474' }} /> : <FavoriteBorderIcon />}
             </button>
-          </IconRight>
+          </div>
         </FavIcon>
         <Row>
-          <CardP>
-            <RoomIcon />
+          <div>
+            <span>
+              <RoomIcon />
+            </span>
             {imovel.cidade}
             {' / '}
             {imovel.bairro}
-          </CardP>
+          </div>
 
-          <CardP>
-            <AttachMoneyIcon />
-
+          <div>
+            <span>
+              <AttachMoneyIcon />
+            </span>
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
-          </CardP>
-          <CardP>
-            <HomeWorkIcon />
+          </div>
+
+          <div>
+            <span>
+              <HomeWorkIcon />
+            </span>
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valorCondominio)}
-          </CardP>
+          </div>
+          <div>
+            <span>
+              <StarIcon />
+            </span>
+            Destaque
+          </div>
 
         </Row>
 
         <LineDiv>
-          <IconDiv>
-            <CardP>
-              <BathtubIcon />
+          <div>
+            <BathtubIcon />
+            <span>
               {imovel.banheiros}
-            </CardP>
-          </IconDiv>
+            </span>
+          </div>
 
-          <IconDiv>
-            <CardP>
-              <HotelIcon />
+          <div>
+            <HotelIcon />
+            <span>
               {imovel.dormitorios}
-            </CardP>
-          </IconDiv>
+            </span>
+          </div>
 
-          <IconDiv>
-            <CardP>
-              <ShuffleSharpIcon />
+          <div>
+            <ShuffleSharpIcon />
+            <span>
               {(imovel.transacao === 'V' ? 'Venda' : 'Locação')}
-            </CardP>
-          </IconDiv>
+            </span>
+          </div>
         </LineDiv>
 
       </Info>

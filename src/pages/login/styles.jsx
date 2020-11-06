@@ -23,12 +23,11 @@ export const useStyles = makeStyles((theme) => ({
 }));
 
 export const Background = styled.div`
-display: flex;
-height:100%;
-width:100%;
-max-width:100%;
-max-height:100%;
+margin:0;
+height:100vh;
+width:100vw;
 background-image: url(${BackGroundImg});
+background-size: cover;
 `;
 
 export const LogoContainer = styled.div`
@@ -41,5 +40,30 @@ mar
 img{
         min-width: 250px;
         width: 5vw;
+    }
+`;
+
+export const BackHome = styled.div`
+padding: 15px 5px;
+display: flex;
+justify-content: flex-start;
+
+    svg{
+        fill:#253D71;
+        font-size: 30px;
+    }
+
+    a{
+        display: flex;
+        align-self:center;
+        font-size:20px;
+        align-items:center;
+        text-decoration: none;
+        color: #253D71;
+
+        &:hover{
+        color: #93c6f9;
+        transition: 0.4s;
+        }
     }
 `;

@@ -1,19 +1,50 @@
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
 export const Container = styled.div`
+align-items: center;
+justify-content: center;
 margin: 0 5vw;
-margin-bottom: 50px;
+display: flex;
+flex:1;
+flex-wrap:wrap;
+`;
+
+export const DivPagination = styled.div`
+    margin: 3% 0 1.5% 0;
+    display: flex;
+    align-items: center;
+ `;
+
+export const CarouselDiv = styled.div`
+margin-top: 5%;
+display: flex;
 `;
 
 export const CardDiv = styled.div`
-margin-top:5%;
-display: grid;
-/* flex-wrap: wrap; */
-/* flex-direction: row; */
-justify-content: space-between;
-grid-template-columns: 1fr 1fr;
-grid-gap: 2%;
-background-color:#f0f1f2
-//background-image:url("https://1.bp.blogspot.com/-20Pr6NS8sUE/UiiuEmt-yNI/AAAAAAAA5Ds/hd1q_99_GN4/s1600/mapa-travessia-Petropolis-Teresopolis.jpg");
+margin-bottom: 3%;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+width: 100%;
+justify-content: center;
 
+    button{
+    border:none;
+    background: none;
+    color: white;
+
+        &:hover{
+            transform: scale(1.3);
+        }
+    }
 `;
+
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));

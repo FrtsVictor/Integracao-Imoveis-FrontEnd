@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
+// Icons
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
+// Material Components
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+// Hooks
 import { useHistory, Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/AuthProviderIntegracao';
-import { Background, useStyles, LogoContainer } from './styles';
+// Styles
+import {
+  Background, useStyles, LogoContainer, BackHome,
+} from './styles';
 import logoImg from '../../assets/logo_1.png';
 
 export const Login = () => {
@@ -40,6 +47,12 @@ export const Login = () => {
 
   return (
     <Background>
+      <BackHome>
+        <Link to="/Home">
+          <ArrowBackIcon />
+          Home
+        </Link>
+      </BackHome>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
