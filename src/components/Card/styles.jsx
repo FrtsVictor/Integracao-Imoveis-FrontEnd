@@ -51,13 +51,19 @@ export const HouseImg = styled.img.attrs((props) => ({
 export const Row = styled.div`
 display:flex;
 flex-direction:column;
-/* margin: 3%; */
+
+    div{
+        display:flex;
+        flex-wrap:wrap;
+        margin-top:2px;
+        align-items:center;
+    }
+
 `;
 
 export const LineDiv = styled.div`
-/* margin: 3%; */
+margin: 3% 0;
 display: flex;
-/* flex-wrap: wrap; */
 justify-content: space-between;
 align-items: center;
 
