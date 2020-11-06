@@ -2,39 +2,44 @@ import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(() => ({
-  root: {
-    width: 345,
-    backgroundColor: '#ece9e9',
-  },
   media: {
+    backgroundSize: 'cover',
     height: '40%',
-    paddingTop: '50%', // 16:9
+    paddingTop: '50%',
   },
   avatar: {
-    backgroundColor: '#6e6d6d',
+    backgroundColor: '#0071C2',
   },
 }));
 
 export const Container = styled.div`
     display: flex;
-    flex:1;
-    `;
-
-export const Filter = styled.div`
-    display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    width: 20%;
-    border-right: 1px solid #ccc;
-    margin: 10px;
- `;
+    margin-top:15px;
+    box-shadow: 0 0 5px 0 gray;
+    border-radius: 10px;
+    overflow: hidden;
+    background: url(${(props) => props.img});
+    background-size: cover;
+    height: 280px;
+    width: 100%;
+    max-width: 360px;
+    min-width: 260px;
+    box-shadow:  24px 20px 51px -21px #191D4D;
 
-export const CardDiv = styled.div`
-display:flex;
+    :hover{
+        transform: scale(1.02);
+        transition: 0.4s;
+    }
+  > *{
+    background: rgb(0,0,0, 0.2);
+  }
 `;
 
 export const CardInfoIcons = styled.div`
-display: flex;
-justify-content:space-between;
-align-items:center;
-flex:1;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    flex:1;
 `;
