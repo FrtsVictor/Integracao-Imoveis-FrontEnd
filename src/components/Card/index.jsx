@@ -1,6 +1,7 @@
 import React from 'react';
 
 // Icons
+import StarIcon from '@material-ui/icons/Star';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import HomeIcon from '@material-ui/icons/Home';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -81,20 +82,32 @@ export const Card = ({ imovel }) => {
         </FavIcon>
         <Row>
           <div>
-            <RoomIcon />
+            <span>
+              <RoomIcon />
+            </span>
             {imovel.cidade}
             {' / '}
             {imovel.bairro}
           </div>
 
           <div>
-            <AttachMoneyIcon />
+            <span>
+              <AttachMoneyIcon />
+            </span>
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor)}
           </div>
 
           <div>
-            <HomeWorkIcon />
+            <span>
+              <HomeWorkIcon />
+            </span>
             { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valorCondominio)}
+          </div>
+          <div>
+            <span>
+              <StarIcon />
+            </span>
+            Destaque
           </div>
 
         </Row>
@@ -102,17 +115,23 @@ export const Card = ({ imovel }) => {
         <LineDiv>
           <div>
             <BathtubIcon />
-            {imovel.banheiros}
+            <span>
+              {imovel.banheiros}
+            </span>
           </div>
 
           <div>
             <HotelIcon />
-            {imovel.dormitorios}
+            <span>
+              {imovel.dormitorios}
+            </span>
           </div>
 
           <div>
             <ShuffleSharpIcon />
-            {(imovel.transacao === 'V' ? 'Venda' : 'Locação')}
+            <span>
+              {(imovel.transacao === 'V' ? 'Venda' : 'Locação')}
+            </span>
           </div>
         </LineDiv>
 
